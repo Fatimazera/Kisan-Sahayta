@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Sprout, Droplets, FlaskConical, CheckCircle2, ArrowRight, BrainCircuit, ShieldCheck } from "lucide-react";
+import { Sprout, Droplets, FlaskConical, ArrowRight, BrainCircuit, ShieldCheck } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import Image from "next/image";
@@ -23,9 +23,6 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-5xl space-y-10">
             <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              <Badge className="bg-primary/20 text-primary border-primary/40 py-2 px-6 text-xs font-bold rounded-full mb-8 backdrop-blur-md">
-                NATIONAL FARMER SUPPORT INITIATIVE
-              </Badge>
               <h1 className="text-6xl md:text-[8rem] font-bold leading-[0.85] text-white tracking-tighter font-louize">
                 WELCOME TO <br />
                 <span className="text-primary italic">KISAN SAHAYATA</span>
