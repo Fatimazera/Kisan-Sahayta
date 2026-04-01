@@ -22,12 +22,12 @@ export function Navbar() {
           <div className="bg-primary/20 p-1.5 rounded-lg">
             <Sprout className="w-6 h-6 text-primary" strokeWidth={2.5} />
           </div>
-          <span className="font-headline text-xl font-bold tracking-tight">CropAid <span className="text-primary">Connect</span></span>
+          <span className="font-headline text-xl font-bold tracking-tight uppercase">KISAN <span className="text-primary">SAHAYATA</span></span>
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/subsidies" className="text-sm font-medium hover:text-primary transition-colors">Subsidies</Link>
+          <Link href="/subsidies" className="text-sm font-medium hover:text-primary transition-colors">Support Programs</Link>
           <Link href="/eligibility" className="text-sm font-medium hover:text-primary transition-colors">Eligibility Checker</Link>
           <Link href="/dashboard" className="text-sm font-medium hover:text-primary transition-colors">Farmer Portal</Link>
           
@@ -41,7 +41,7 @@ export function Navbar() {
               <DropdownMenuContent align="end">
                 <DropdownMenuItem>English</DropdownMenuItem>
                 <DropdownMenuItem>Hindi (हिन्दी)</DropdownMenuItem>
-                <DropdownMenuItem>Spanish (Español)</DropdownMenuItem>
+                <DropdownMenuItem>Marathi (मराठी)</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             
@@ -67,7 +67,7 @@ export function Navbar() {
       {/* Mobile Nav */}
       {isOpen && (
         <div className="md:hidden bg-background border-b px-4 py-6 space-y-4 animate-in slide-in-from-top duration-300">
-          <Link href="/subsidies" className="block text-lg font-medium" onClick={() => setIsOpen(false)}>Subsidies</Link>
+          <Link href="/subsidies" className="block text-lg font-medium" onClick={() => setIsOpen(false)}>Support Programs</Link>
           <Link href="/eligibility" className="block text-lg font-medium" onClick={() => setIsOpen(false)}>Eligibility Checker</Link>
           <Link href="/dashboard" className="block text-lg font-medium" onClick={() => setIsOpen(false)}>Farmer Portal</Link>
           <div className="pt-4 flex flex-col gap-3 border-t">

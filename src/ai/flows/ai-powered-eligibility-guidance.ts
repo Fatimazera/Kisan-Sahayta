@@ -1,8 +1,9 @@
+
 'use server';
 /**
  * @fileOverview This file implements an AI-powered eligibility assistant flow.
  *
- * - aiPoweredEligibilityGuidance - A function that processes farmer details to determine subsidy eligibility and provides application advice.
+ * - aiPoweredEligibilityGuidance - A function that processes farmer details to determine eligibility and provides application advice.
  * - AIPoweredEligibilityGuidanceInput - The input type for the aiPoweredEligibilityGuidance function.
  * - AIPoweredEligibilityGuidanceOutput - The return type for the aiPoweredEligibilityGuidance function.
  */
@@ -54,12 +55,12 @@ const AIPoweredEligibilityGuidanceOutputSchema = z.object({
   eligibleSubsidies: z
     .array(z.string())
     .describe(
-      'A list of subsidies the farmer appears to be eligible for (e.g., "Fertilizer Subsidy", "Seed Subsidy", "Irrigation Subsidy").' 
+      'A list of programs the farmer appears to be eligible for.' 
     ),
   ineligibleSubsidies: z
     .array(z.string())
     .describe(
-      'A list of subsidies the farmer appears to be ineligible for, or for which more information is needed.' 
+      'A list of programs the farmer appears to be ineligible for, or for which more information is needed.' 
     ),
   eligibilitySummary: z
     .string()
@@ -67,12 +68,12 @@ const AIPoweredEligibilityGuidanceOutputSchema = z.object({
   applicationGuidance: z
     .string()
     .describe(
-      'Detailed, actionable advice on how to successfully apply for eligible subsidies, including general steps and tips.' 
+      'Detailed, actionable advice on how to successfully apply for eligible programs, including general steps and tips.' 
     ),
   requiredDocuments: z
     .array(z.string())
     .describe(
-      'A list of common documents typically required for subsidy applications (e.g., "Land ownership documents", "National ID card", "Bank account details", "Farm income statements").' 
+      'A list of common documents typically required for applications.' 
     ),
   nextSteps: z
     .string()
@@ -94,14 +95,14 @@ const eligibilityCheckerPrompt = ai.definePrompt({
   name: 'eligibilityCheckerPrompt',
   input: {schema: AIPoweredEligibilityGuidanceInputSchema},
   output: {schema: AIPoweredEligibilityGuidanceOutputSchema},
-  prompt: `You are an expert agricultural subsidy advisor for the 'CropAid Connect' platform. Your role is to help farmers understand their eligibility for various subsidies and guide them through the application process.
+  prompt: `You are an expert agricultural advisor for the 'KISAN SAHAYATA' platform. Your role is to help farmers understand their eligibility for various support programs and guide them through the application process.
 
-Based on the farmer's provided profile and details, determine their eligibility for the following common subsidy categories:
-1.  **Fertilizer Subsidy** (often based on crop type, farm size, and location)
-2.  **Seed Subsidy** (often based on crop type, farm size, and regional programs)
-3.  **Irrigation Subsidy** (often based on current irrigation methods, farm size, water scarcity in region, and income level)
+Based on the farmer's provided profile and details, determine their eligibility for the following common categories:
+1.  **Fertilizer Support**
+2.  **Seed Programs**
+3.  **Irrigation Assistance**
 
-Provide a clear summary of which subsidies the farmer is eligible for and which they are not, explaining the reasoning concisely. Then, offer actionable advice on how to successfully apply for the eligible subsidies, including a list of common required documents and clear next steps.
+Provide a clear summary of which programs the farmer is eligible for and which they are not, explaining the reasoning concisely. Then, offer actionable advice on how to successfully apply, including a list of common required documents and clear next steps.
 
 Farmer Profile:
 Location: {{{farmLocation}}}
@@ -112,7 +113,7 @@ Farm Size: {{{farmSizeAcres}}} acres
 {{#if previousSubsidiesReceived}}Previous Subsidies Received: {{#each previousSubsidiesReceived}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}{{else}}Previous Subsidies Received: None{{/if}}
 {{#if additionalDetails}}Additional Details: {{{additionalDetails}}}{{else}}Additional Details: None{{/if}}
 
-Consider typical eligibility criteria for each subsidy type. If a farmer is ineligible for a specific subsidy, explain why based on the provided information, or state if more information is needed. For eligible subsidies, provide a practical, step-by-step application guide.
+Consider typical eligibility criteria for each program type. If a farmer is ineligible for a specific program, explain why based on the provided information, or state if more information is needed. For eligible programs, provide a practical, step-by-step application guide.
 
 Ensure your response is structured exactly according to the output JSON schema.`,
 });

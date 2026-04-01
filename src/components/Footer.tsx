@@ -10,10 +10,10 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
               <Sprout className="w-6 h-6 text-primary" />
-              <span className="font-headline text-xl font-bold tracking-tight">CropAid Connect</span>
+              <span className="font-headline text-xl font-bold tracking-tight uppercase">KISAN SAHAYATA</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Modernizing agricultural support through technology. Empowering farmers with transparent, efficient, and accessible subsidy management.
+              Modernizing agricultural support through technology. Empowering farmers with transparent, efficient, and accessible management of resources.
             </p>
             <div className="flex gap-4">
               <Facebook className="w-5 h-5 text-muted-foreground cursor-pointer hover:text-primary" />
@@ -25,7 +25,7 @@ export function Footer() {
           <div>
             <h4 className="font-headline font-semibold mb-4">Platform</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/subsidies" className="hover:text-primary transition-colors">All Subsidies</Link></li>
+              <li><Link href="/subsidies" className="hover:text-primary transition-colors">Programs</Link></li>
               <li><Link href="/eligibility" className="hover:text-primary transition-colors">Eligibility AI</Link></li>
               <li><Link href="/apply" className="hover:text-primary transition-colors">Online Application</Link></li>
               <li><Link href="/dashboard" className="hover:text-primary transition-colors">Farmer Dashboard</Link></li>
@@ -47,11 +47,11 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary" />
-                support@cropaid.gov
+                support@kisansahayata.gov
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-primary" />
-                1-800-CROPAID
+                1-800-KISAN-HELP
               </li>
               <li className="pt-4">
                 <p className="text-xs text-muted-foreground">
@@ -63,7 +63,7 @@ export function Footer() {
         </div>
         
         <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-          <p>© 2024 CropAid Connect. A Government Tech Initiative.</p>
+          <p>© 2024 KISAN SAHAYATA. A Government Tech Initiative.</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:underline">Privacy Policy</Link>
             <Link href="#" className="hover:underline">Terms of Service</Link>

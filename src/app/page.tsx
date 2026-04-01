@@ -1,11 +1,12 @@
+
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Sprout, Droplets, FlaskConical, CheckCircle2, ArrowRight, BrainCircuit, ShieldCheck } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -23,24 +24,24 @@ export default function Home() {
         </div>
         
         <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-4xl space-y-10">
+          <div className="max-w-5xl space-y-10">
             <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
               <Badge className="bg-primary/20 text-primary border-primary/40 py-2.5 px-8 text-sm font-bold backdrop-blur-3xl rounded-full mb-10 shadow-[0_0_40px_rgba(162,217,150,0.2)]">
-                AGRICULTURAL TECHNOLOGY 3.0
+                FARMER SUPPORT INITIATIVE
               </Badge>
-              <h1 className="text-6xl md:text-9xl font-bold leading-[0.95] text-white tracking-tighter">
-                Smart Subsidies <br />
-                <span className="text-primary italic">Better Yields</span>
+              <h1 className="text-6xl md:text-[8rem] font-bold leading-[0.85] text-white tracking-tighter font-louize">
+                WELCOME TO <br />
+                <span className="text-primary italic">KISAN SAHAYATA</span>
               </h1>
             </div>
 
             <p className="text-xl md:text-3xl text-white/80 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
-              Access Fertilizer, Seed, and Irrigation subsidies with our AI-powered platform. Fast approval, transparent tracking, and comprehensive regional support.
+              Access Fertilizer, Seed, and Irrigation assistance with our AI-powered platform. Fast approval, transparent tracking, and comprehensive regional support.
             </p>
 
             <div className="flex flex-wrap gap-6 pt-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
               <Button size="lg" className="rounded-full text-xl px-14 h-20 shadow-2xl shadow-primary/40 font-bold transition-all hover:scale-105 active:scale-95 text-primary-foreground bg-primary" asChild>
-                <Link href="/apply">Apply for Subsidy</Link>
+                <Link href="/apply">Apply for Assistance</Link>
               </Button>
               <Button size="lg" variant="outline" className="rounded-full text-xl px-14 h-20 bg-white/5 backdrop-blur-3xl border-white/20 text-white hover:bg-white/15 transition-all hover:scale-105 active:scale-95" asChild>
                 <Link href="/eligibility">Check Eligibility</Link>
@@ -68,21 +69,21 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
             {
-              title: "Fertilizer Subsidy",
+              title: "Fertilizer Support",
               description: "Direct discounts on NPK, Urea, and organic fertilizers based on soil health reports.",
               icon: FlaskConical,
               img: 'fertilizer-cat',
               color: "bg-blue-50 text-blue-600"
             },
             {
-              title: "Seed Subsidy",
+              title: "Seed Programs",
               description: "Access high-yield variety (HYV) and climate-resilient seeds at competitive prices.",
               icon: Sprout,
               img: 'seeds-cat',
               color: "bg-green-50 text-green-600"
             },
             {
-              title: "Irrigation Subsidy",
+              title: "Irrigation Assistance",
               description: "Support for drip irrigation, sprinklers, and solar pump installations.",
               icon: Droplets,
               img: 'irrigation-cat',
@@ -169,7 +170,7 @@ export default function Home() {
               <div className="space-y-8">
                 <div className="p-8 bg-primary/5 rounded-[3rem] border border-primary/10 relative overflow-hidden group">
                   <div className="absolute left-0 top-0 w-1.5 h-full bg-primary" />
-                  <p className="italic text-xl text-foreground/90 leading-relaxed">"The AI guide helped me find three subsidies I didn't even know existed for my orange grove. It's a game changer for rural farmers."</p>
+                  <p className="italic text-xl text-foreground/90 leading-relaxed">"The AI guide helped me find assistance I didn't even know existed for my orange grove. It's a game changer for rural farmers."</p>
                   <p className="mt-6 font-bold text-primary text-2xl">— Ramesh K., Nashik District</p>
                 </div>
                 <div className="grid grid-cols-2 gap-8">
@@ -191,10 +192,10 @@ export default function Home() {
       {/* Trust Badges */}
       <section className="py-24 container mx-auto px-4 border-t border-muted bg-muted/5">
         <div className="flex flex-wrap justify-center items-center gap-16 md:gap-40 grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
-           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter">MINISTRY <span className="text-primary italic">OF AGRI</span></div>
-           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter">DIGITAL <span className="text-primary italic">INDIA</span></div>
-           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter">FARMER <span className="text-primary italic">FIRST</span></div>
-           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter">RURAL <span className="text-primary italic">DEV</span></div>
+           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter uppercase">MINISTRY <span className="text-primary italic">OF AGRICULTURE</span></div>
+           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter uppercase">DIGITAL <span className="text-primary italic">INDIA</span></div>
+           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter uppercase">KISAN <span className="text-primary italic">FIRST</span></div>
+           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter uppercase">RURAL <span className="text-primary italic">DEVELOPMENT</span></div>
         </div>
       </section>
     </div>
