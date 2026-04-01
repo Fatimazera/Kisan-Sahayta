@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Sprout, Menu, X, Globe, User } from "lucide-react";
+import { Sprout, Menu, X, Globe, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
   DropdownMenu, 
@@ -13,9 +13,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
+const languages = [
+  { name: "English", native: "English" },
+  { name: "Hindi", native: "हिन्दी" },
+  { name: "Urdu", native: "اردو" },
+  { name: "Marathi", native: "मराठी" },
+  { name: "Gujarati", native: "ગુજરાતી" },
+  { name: "Bengali", native: "বাংলা" },
+];
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentLang, setCurrentLang] = useState("English");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,14 +60,23 @@ export function Navbar() {
           <div className="flex items-center gap-6 border-l border-white/10 pl-6">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="rounded-full text-white hover:bg-white/10">
-                  <Globe className="w-5 h-5" />
+                <Button variant="ghost" className="rounded-full text-white/80 hover:text-white hover:bg-white/10 flex items-center gap-2 px-4">
+                  <Globe className="w-4 h-4" />
+                  <span className="text-xs font-bold tracking-widest uppercase">{currentLang}</span>
+                  <ChevronDown className="w-3 h-3 opacity-50" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>English</DropdownMenuItem>
-                <DropdownMenuItem>Hindi (हिन्दी)</DropdownMenuItem>
-                <DropdownMenuItem>Marathi (मराठी)</DropdownMenuItem>
+              <DropdownMenuContent align="end" className="w-48">
+                {languages.map((lang) => (
+                  <DropdownMenuItem 
+                    key={lang.name} 
+                    onClick={() => setCurrentLang(lang.name)}
+                    className="flex justify-between items-center cursor-pointer"
+                  >
+                    <span>{lang.name}</span>
+                    <span className="text-[10px] text-muted-foreground opacity-70">{lang.native}</span>
+                  </DropdownMenuItem>
+                ))}
               </DropdownMenuContent>
             </DropdownMenu>
             
@@ -68,9 +87,25 @@ export function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+           <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="rounded-full text-white">
+                  <Globe className="w-5 h-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                {languages.map((lang) => (
+                  <DropdownMenuItem key={lang.name} onClick={() => setCurrentLang(lang.name)}>
+                    {lang.name} ({lang.native})
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <button className="text-white" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+            </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
@@ -80,7 +115,32 @@ export function Navbar() {
           <Link href="/subsidies" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>About</Link>
           <Link href="/eligibility" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>Agri-AI</Link>
           <Link href="/dashboard" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>Portal</Link>
+          
           <div className="pt-8 flex flex-col gap-6 border-t border-white/10">
+            <div className="space-y-4">
+               <p className="text-[10px] font-black tracking-[0.3em] uppercase text-white/30">Select Language</p>
+               <div className="grid grid-cols-2 gap-3">
+                  {languages.map((lang) => (
+                    <button 
+                      key={lang.name}
+                      onClick={() => {
+                        setCurrentLang(lang.name);
+                        setIsOpen(false);
+                      }}
+                      className={cn(
+                        "text-left p-3 rounded-xl border transition-all",
+                        currentLang === lang.name 
+                          ? "bg-primary border-primary text-primary-foreground font-bold" 
+                          : "bg-white/5 border-white/10 text-white/60"
+                      )}
+                    >
+                      <p className="text-sm">{lang.name}</p>
+                      <p className="text-[10px] opacity-60">{lang.native}</p>
+                    </button>
+                  ))}
+               </div>
+            </div>
+
             <Button asChild className="w-full h-16 text-xl rounded-full font-black uppercase tracking-tighter" onClick={() => setIsOpen(false)}>
               <Link href="/apply">Apply Now</Link>
             </Button>
