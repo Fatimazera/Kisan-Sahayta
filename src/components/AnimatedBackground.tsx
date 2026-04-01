@@ -32,8 +32,8 @@ export function AnimatedBackground() {
           const currentProgress = Math.floor((loadedCount / frameCount) * 100);
           setLoadProgress(currentProgress);
           
-          // Start playing once a sufficient buffer (e.g., 30 frames) is loaded to show something early
-          if (loadedCount >= 30 && !hasStarted) {
+          // Start playing once a small buffer (e.g., 20 frames) is loaded for instant gratification
+          if (loadedCount >= 20 && !hasStarted) {
             setHasStarted(true);
           }
         };
@@ -62,7 +62,7 @@ export function AnimatedBackground() {
     let frameIndex = 0;
     let animationFrameId: number;
     let lastTime = 0;
-    const frameDelay = 41; // ~24 FPS
+    const frameDelay = 41; // ~24 FPS (matches 0.041s delay)
 
     const animate = (time: number) => {
       if (time - lastTime >= frameDelay) {
@@ -72,7 +72,7 @@ export function AnimatedBackground() {
         const ctx = canvas.getContext('2d', { alpha: false });
         if (!ctx) return;
 
-        // Sync canvas size to viewport
+        // Sync canvas size to viewport exactly for maximum width/quality
         if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
           canvas.width = window.innerWidth;
           canvas.height = window.innerHeight;
@@ -89,6 +89,7 @@ export function AnimatedBackground() {
           
           let drawWidth, drawHeight, x, y;
 
+          // Advanced cover strategy to ensure it always fits beautifully
           if (canvasRatio > imgRatio) {
             drawWidth = width;
             drawHeight = width / imgRatio;
@@ -104,8 +105,7 @@ export function AnimatedBackground() {
           ctx.drawImage(img, x, y, drawWidth, drawHeight);
           frameIndex = (frameIndex + 1) % frameCount;
         } else {
-          // If a frame isn't ready, skip or loop back to find a valid one
-          // This keeps the animation "alive" even if some frames are slow
+          // Skip missing frames to keep animation fluid
           frameIndex = (frameIndex + 1) % frameCount;
         }
         
@@ -123,23 +123,23 @@ export function AnimatedBackground() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none bg-black">
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full object-cover"
         style={{ 
           opacity: hasStarted ? 1 : 0, 
-          transition: 'opacity 2s ease-in-out',
-          filter: 'brightness(0.7) contrast(1.05)'
+          transition: 'opacity 2.5s ease-in-out',
+          filter: 'brightness(0.6) contrast(1.1)'
         }}
       />
       {!hasStarted && (
-        <div className="absolute inset-0 bg-black flex flex-col items-center justify-center gap-6">
-           <div className="w-64 h-1 bg-white/10 rounded-full overflow-hidden">
+        <div className="absolute inset-0 bg-black flex flex-col items-center justify-center gap-6 z-50">
+           <div className="w-64 h-1 bg-white/5 rounded-full overflow-hidden">
               <div 
-                className="h-full bg-primary transition-all duration-300 ease-out" 
+                className="h-full bg-primary transition-all duration-300 ease-out shadow-[0_0_15px_rgba(162,217,150,0.5)]" 
                 style={{ width: `${loadProgress}%` }}
               />
            </div>
-           <div className="text-white/30 text-[10px] font-bold tracking-[0.5em] uppercase">
-              Initializing Experience... {loadProgress}%
+           <div className="text-white/20 text-[10px] font-black tracking-[0.8em] uppercase animate-pulse">
+              KISAN SAHAYATA EXPERIENCE {loadProgress}%
            </div>
         </div>
       )}

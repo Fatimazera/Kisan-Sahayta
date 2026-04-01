@@ -15,38 +15,38 @@ export default function Home() {
       <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden -mt-20">
         <div className="absolute inset-0 z-0">
           <AnimatedBackground />
-          {/* Enhanced readability overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80 z-10" />
-          <div className="absolute inset-0 bg-black/40 z-10" />
+          {/* Cinematic readability overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 z-10" />
+          <div className="absolute inset-0 bg-black/30 z-10" />
         </div>
         
         <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-5xl space-y-10">
+          <div className="max-w-6xl space-y-12">
             <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              <h1 className="text-6xl md:text-[8rem] font-bold leading-[0.85] text-white tracking-tighter font-louize">
+              <h1 className="text-6xl md:text-[9rem] font-bold leading-[0.85] text-white tracking-tighter font-louize">
                 WELCOME TO <br />
                 <span className="text-primary italic">KISAN SAHAYATA</span>
               </h1>
             </div>
 
-            <p className="text-xl md:text-2xl text-white/70 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
-              Empowering agricultural progress through intelligent assistance. Access fertilizer, seed, and irrigation support with verified government schemes.
+            <p className="text-xl md:text-2xl text-white/60 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
+              Modernizing agricultural progress through cinematic intelligence. A seamless gateway for India's farming community.
             </p>
 
-            <div className="flex flex-wrap gap-6 pt-6 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
-              <Button size="lg" className="rounded-full text-lg px-12 h-16 shadow-2xl shadow-primary/40 font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform" asChild>
-                <Link href="/apply">Apply for Assistance</Link>
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full text-lg px-12 h-16 bg-white/5 backdrop-blur-xl border-white/20 text-white hover:bg-white/15 hover:scale-105 transition-transform" asChild>
-                <Link href="/eligibility">Check Eligibility</Link>
-              </Button>
+            <div className="flex items-center gap-10 pt-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
+              <Link href="/" className="text-white/80 hover:text-primary text-xl font-bold tracking-widest uppercase transition-colors border-b-2 border-transparent hover:border-primary pb-1">
+                Home
+              </Link>
+              <Link href="/subsidies" className="text-white/80 hover:text-primary text-xl font-bold tracking-widest uppercase transition-colors border-b-2 border-transparent hover:border-primary pb-1">
+                About
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Scroll Visualizer */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce opacity-40">
-          <div className="w-px h-16 bg-gradient-to-b from-transparent via-white to-transparent" />
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce opacity-30">
+          <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-white to-transparent" />
         </div>
       </section>
 
