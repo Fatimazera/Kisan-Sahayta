@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Sprout, Droplets, FlaskConical, ArrowRight, BrainCircuit, ShieldCheck } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { QRVerificationSection } from "@/components/QRVerificationSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -111,6 +112,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* QR Verification Section */}
+      <QRVerificationSection />
 
       {/* AI Tool CTA */}
       <section className="py-32 bg-accent text-accent-foreground relative overflow-hidden">
