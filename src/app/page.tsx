@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -21,12 +20,12 @@ export default function Home() {
             fill
             className="object-cover"
             priority
-            unoptimized={heroImg?.id === 'hero-farm-animated'}
+            unoptimized={true}
             data-ai-hint="animated nature"
           />
-          {/* Enhanced cinematic overlay */}
+          {/* Enhanced cinematic overlay for readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-          <div className="absolute inset-0 bg-black/20" /> {/* Subtle overall darkening */}
+          <div className="absolute inset-0 bg-black/30" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -41,10 +40,10 @@ export default function Home() {
               Access Fertilizer, Seed, and Irrigation subsidies with our AI-powered platform. Fast approval, transparent tracking, and regional language support.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg" className="rounded-full text-lg px-8 h-14 shadow-xl shadow-primary/20" asChild>
+              <Button size="lg" className="rounded-full text-lg px-8 h-14 shadow-xl shadow-primary/20 font-bold" asChild>
                 <Link href="/apply">Apply for Subsidy</Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full text-lg px-8 h-14 bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30" asChild>
+              <Button size="lg" variant="outline" className="rounded-full text-lg px-8 h-14 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20 transition-all" asChild>
                 <Link href="/eligibility">Check Eligibility</Link>
               </Button>
             </div>
@@ -149,13 +148,13 @@ export default function Home() {
                   <ShieldCheck className="text-primary w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold">Trust & Security</h4>
-                  <p className="text-xs opacity-60">Verified Government Data Interface</p>
+                  <h4 className="font-bold text-foreground">Trust & Security</h4>
+                  <p className="text-xs text-muted-foreground">Verified Government Data Interface</p>
                 </div>
               </div>
               <div className="space-y-4 text-sm">
                 <div className="p-4 bg-primary/5 rounded-2xl border border-primary/10">
-                  <p className="italic opacity-80">"The AI guide helped me find three subsidies I didn't even know existed for my orange grove."</p>
+                  <p className="italic text-foreground/80">"The AI guide helped me find three subsidies I didn't even know existed for my orange grove."</p>
                   <p className="mt-2 font-bold text-primary">— Ramesh K., Farmer</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
