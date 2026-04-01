@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden -mt-20 pt-20">
+      <section className="relative h-screen min-h-[800px] flex items-center overflow-hidden -mt-20 pt-32">
         <div className="absolute inset-0 z-0">
           <AnimatedBackground />
           {/* Cinematic readability overlays */}
