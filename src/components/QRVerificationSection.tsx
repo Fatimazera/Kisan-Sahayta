@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -14,14 +13,14 @@ export function QRVerificationSection() {
   const [verifyUrl, setVerifyUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // Construct dynamic URL based on current origin
-    setVerifyUrl(`${window.location.origin}/verify/SUB-99283-X`);
-  }, []);
-
   const handleGenerate = () => {
     setLoading(true);
+    // Randomly determine authenticity for demonstration
+    const isAuthentic = Math.random() > 0.5;
+    
     setTimeout(() => {
+      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+      setVerifyUrl(`${baseUrl}/verify/SUB-${Math.floor(Math.random() * 90000) + 10000}-X?auth=${isAuthentic}`);
       setShowQR(true);
       setLoading(false);
     }, 800);
@@ -88,7 +87,7 @@ export function QRVerificationSection() {
                     </div>
                     <div className="text-center space-y-2">
                       <p className="text-xs font-bold text-primary uppercase tracking-widest">Scan to Verify</p>
-                      <Link href={`/verify/SUB-99283-X`} className="text-sm font-medium hover:underline flex items-center gap-1 justify-center">
+                      <Link href={verifyUrl} className="text-sm font-medium hover:underline flex items-center gap-1 justify-center">
                         Open Verification Page <ExternalLink className="w-3 h-3" />
                       </Link>
                     </div>
