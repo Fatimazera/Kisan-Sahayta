@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -19,23 +18,23 @@ export default function Home() {
           
           {/* Layered Overlays for Optimal Text Readability & Depth */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 z-10" />
-          <div className="absolute inset-0 bg-black/30 z-10" />
+          <div className="absolute inset-0 bg-black/40 z-10" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] z-10" />
         </div>
         
         <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-5xl space-y-10">
+          <div className="max-w-6xl space-y-10">
             <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
               <Badge className="bg-primary/20 text-primary border-primary/40 py-2.5 px-8 text-sm font-bold backdrop-blur-3xl rounded-full mb-10 shadow-[0_0_40px_rgba(162,217,150,0.2)]">
-                FARMER SUPPORT INITIATIVE
+                NATIONAL FARMER SUPPORT INITIATIVE
               </Badge>
-              <h1 className="text-6xl md:text-[8rem] font-bold leading-[0.85] text-white tracking-tighter font-louize">
+              <h1 className="text-6xl md:text-[7rem] font-bold leading-[0.9] text-white tracking-tighter font-louize">
                 WELCOME TO <br />
                 <span className="text-primary italic">KISAN SAHAYATA</span>
               </h1>
             </div>
 
-            <p className="text-xl md:text-3xl text-white/80 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
+            <p className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
               Access Fertilizer, Seed, and Irrigation assistance with our AI-powered platform. Fast approval, transparent tracking, and comprehensive regional support.
             </p>
 
@@ -59,10 +58,10 @@ export default function Home() {
       {/* Subsidy Categories */}
       <section className="py-32 container mx-auto px-4 bg-background">
         <div className="text-center space-y-6 mb-24 max-w-3xl mx-auto">
-          <Badge variant="outline" className="rounded-full px-5 py-1.5 text-primary border-primary font-bold tracking-widest uppercase text-[10px]">National Programs</Badge>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">Comprehensive Support</h2>
+          <Badge variant="outline" className="rounded-full px-5 py-1.5 text-primary border-primary font-bold tracking-widest uppercase text-[10px]">Pillars of Support</Badge>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">Comprehensive Agriculture Solutions</h2>
           <p className="text-muted-foreground text-xl leading-relaxed">
-            Choose the category that fits your farming needs. Each program is tailored to maximize your farm's productivity and long-term sustainability.
+            Direct government support tailored to maximize your farm's productivity and long-term sustainability.
           </p>
         </div>
 
@@ -99,9 +98,6 @@ export default function Home() {
                   className="object-cover group-hover:scale-110 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
-                <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
-                  <Badge className="bg-white/20 backdrop-blur-md text-white border-white/20">Active Program</Badge>
-                </div>
               </div>
               <CardHeader className="pt-10 px-10">
                 <div className={`w-16 h-16 rounded-2xl ${cat.color} flex items-center justify-center mb-8 shadow-md transform group-hover:rotate-6 transition-transform`}>
@@ -137,21 +133,6 @@ export default function Home() {
             <p className="text-2xl text-accent-foreground/80 leading-relaxed max-w-xl">
               Our AI-powered assistant analyzes your farm profile against dozens of current government schemes to find your best matches in seconds.
             </p>
-            <ul className="space-y-6">
-              {[
-                "Instant eligibility check with 98.4% accuracy",
-                "Personalized document requirements list",
-                "Actionable improvement tips for applications",
-                "Step-by-step guidance in 12 regional languages"
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-5 text-xl">
-                  <div className="bg-primary/20 p-1.5 rounded-full">
-                    <CheckCircle2 className="text-primary w-6 h-6" />
-                  </div>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
             <Button size="lg" variant="secondary" className="rounded-full px-12 h-18 font-bold text-xl hover:scale-105 transition-transform shadow-xl shadow-black/20" asChild>
               <Link href="/eligibility">Try Eligibility AI</Link>
             </Button>
@@ -173,29 +154,9 @@ export default function Home() {
                   <p className="italic text-xl text-foreground/90 leading-relaxed">"The AI guide helped me find assistance I didn't even know existed for my orange grove. It's a game changer for rural farmers."</p>
                   <p className="mt-6 font-bold text-primary text-2xl">— Ramesh K., Nashik District</p>
                 </div>
-                <div className="grid grid-cols-2 gap-8">
-                  <div className="p-8 rounded-[3rem] bg-white/5 border border-white/10 text-center transition-all hover:bg-white/10 hover:border-primary/30">
-                    <div className="text-4xl font-bold text-primary mb-2">98.4%</div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-60">Precision Rate</div>
-                  </div>
-                  <div className="p-8 rounded-[3rem] bg-white/5 border border-white/10 text-center transition-all hover:bg-white/10 hover:border-primary/30">
-                    <div className="text-4xl font-bold text-primary mb-2">&lt; 24h</div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-60">Avg. Approval</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Trust Badges */}
-      <section className="py-24 container mx-auto px-4 border-t border-muted bg-muted/5">
-        <div className="flex flex-wrap justify-center items-center gap-16 md:gap-40 grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
-           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter uppercase">MINISTRY <span className="text-primary italic">OF AGRICULTURE</span></div>
-           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter uppercase">DIGITAL <span className="text-primary italic">INDIA</span></div>
-           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter uppercase">KISAN <span className="text-primary italic">FIRST</span></div>
-           <div className="flex items-center gap-4 font-bold text-4xl tracking-tighter uppercase">RURAL <span className="text-primary italic">DEVELOPMENT</span></div>
         </div>
       </section>
     </div>
