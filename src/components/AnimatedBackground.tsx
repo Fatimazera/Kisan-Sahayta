@@ -4,13 +4,13 @@ import React, { useEffect, useRef, useState } from 'react';
 
 /**
  * AnimatedBackground Component
- * Renders a high-quality sequence of 240 WebP frames onto a canvas to create a smooth,
+ * Renders a high-quality sequence of 300 WebP frames onto a canvas to create a smooth,
  * cinematic background video effect. Optimized with preloading and frame-buffering.
  */
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
-  const frameCount = 240;
+  const frameCount = 300;
   const [hasStarted, setHasStarted] = useState(false);
   const [loadProgress, setLoadProgress] = useState(0);
 
@@ -22,12 +22,15 @@ export function AnimatedBackground() {
       for (let i = 0; i < frameCount; i++) {
         const img = new Image();
         const frameNum = i.toString().padStart(3, '0');
+        // Construct the URL using the provided pattern
         img.src = `https://uyjvjmfdungodykkmrph.supabase.co/storage/v1/object/public/tree-animation/frame_${frameNum}_delay-0.041s.webp`;
         img.onload = () => {
           loadedCount++;
-          setLoadProgress(Math.floor((loadedCount / frameCount) * 100));
-          // Start playing once a significant portion (e.g., 40 frames) is buffered
-          if (loadedCount > 40 && !hasStarted) {
+          const currentProgress = Math.floor((loadedCount / frameCount) * 100);
+          setLoadProgress(currentProgress);
+          
+          // Start playing once a sufficient buffer (e.g., 60 frames or 20%) is loaded
+          if (loadedCount > 60 && !hasStarted) {
             setHasStarted(true);
           }
         };
@@ -49,7 +52,7 @@ export function AnimatedBackground() {
     let frameIndex = 0;
     let animationFrameId: number;
     let lastTime = 0;
-    const frameDelay = 41; // ~24 FPS matching the 0.041s delay
+    const frameDelay = 41; // ~24 FPS matching the 0.041s delay per frame
 
     const animate = (time: number) => {
       if (time - lastTime >= frameDelay) {
@@ -61,11 +64,13 @@ export function AnimatedBackground() {
           const width = window.innerWidth;
           const height = window.innerHeight;
           
+          // Sync canvas size to viewport
           if (canvas.width !== width || canvas.height !== height) {
             canvas.width = width;
             canvas.height = height;
           }
 
+          // Cover logic (similar to object-fit: cover)
           const imgRatio = img.width / img.height;
           const canvasRatio = width / height;
           
@@ -83,6 +88,7 @@ export function AnimatedBackground() {
             y = 0;
           }
 
+          // Optimized clear and draw
           ctx.drawImage(img, x, y, drawWidth, drawHeight);
           frameIndex = (frameIndex + 1) % frameCount;
         }
@@ -103,20 +109,20 @@ export function AnimatedBackground() {
         className="absolute inset-0 w-full h-full"
         style={{ 
           opacity: hasStarted ? 1 : 0, 
-          transition: 'opacity 2s ease-in-out',
+          transition: 'opacity 2.5s ease-in-out',
           filter: 'brightness(0.65) contrast(1.1) saturate(1.1)'
         }}
       />
       {!hasStarted && (
-        <div className="absolute inset-0 bg-black flex flex-col items-center justify-center gap-4">
-           <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
+        <div className="absolute inset-0 bg-black flex flex-col items-center justify-center gap-6">
+           <div className="w-64 h-1.5 bg-white/10 rounded-full overflow-hidden">
               <div 
-                className="h-full bg-primary transition-all duration-300" 
+                className="h-full bg-primary transition-all duration-500 ease-out shadow-[0_0_15px_rgba(162,217,150,0.5)]" 
                 style={{ width: `${loadProgress}%` }}
               />
            </div>
-           <div className="text-white/30 text-[10px] font-bold tracking-[0.4em] uppercase">
-              Cinematic Sequence Initializing... {loadProgress}%
+           <div className="text-white/40 text-[11px] font-bold tracking-[0.5em] uppercase animate-pulse">
+              Buffering Experience... {loadProgress}%
            </div>
         </div>
       )}
