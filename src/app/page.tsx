@@ -8,7 +8,7 @@ import { Sprout, Droplets, FlaskConical, CheckCircle2, ArrowRight, BrainCircuit,
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function Home() {
-  const heroImg = PlaceHolderImages.find(img => img.id === 'hero-farm');
+  const heroImg = PlaceHolderImages.find(img => img.id === 'hero-farm-animated') || PlaceHolderImages.find(img => img.id === 'hero-farm');
   
   return (
     <div className="flex flex-col">
@@ -19,29 +19,32 @@ export default function Home() {
             src={heroImg?.imageUrl || ""} 
             alt={heroImg?.description || ""}
             fill
-            className="object-cover brightness-[0.85]"
+            className="object-cover"
             priority
-            data-ai-hint="green farm sunrise"
+            unoptimized={heroImg?.id === 'hero-farm-animated'}
+            data-ai-hint="animated nature"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent" />
+          {/* Enhanced cinematic overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-black/20" /> {/* Subtle overall darkening */}
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl space-y-6">
-            <Badge className="bg-primary/20 text-primary border-primary/30 py-1.5 px-4 text-sm font-medium">
+            <Badge className="bg-primary/20 text-primary border-primary/30 py-1.5 px-4 text-sm font-medium backdrop-blur-md">
               Agricultural Revolution 2.0
             </Badge>
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight text-white drop-shadow-md">
               Smart Subsidies for <span className="text-primary italic">Better Yields</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-lg leading-relaxed">
+            <p className="text-xl text-white/90 max-w-lg leading-relaxed drop-shadow-sm">
               Access Fertilizer, Seed, and Irrigation subsidies with our AI-powered platform. Fast approval, transparent tracking, and regional language support.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <Button size="lg" className="rounded-full text-lg px-8 h-14 shadow-xl shadow-primary/20" asChild>
                 <Link href="/apply">Apply for Subsidy</Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full text-lg px-8 h-14 bg-white/50 backdrop-blur-sm" asChild>
+              <Button size="lg" variant="outline" className="rounded-full text-lg px-8 h-14 bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30" asChild>
                 <Link href="/eligibility">Check Eligibility</Link>
               </Button>
             </div>

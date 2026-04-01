@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "hero-farm-animated",
+      "description": "Cinematic tree and field animation background",
+      "imageUrl": "https://uyjvjmfdungodykkmrph.supabase.co/storage/v1/object/public/tree-animation/frame_000_delay-0.041s.webp",
+      "imageHint": "animated nature"
+    },
+    {
       "id": "hero-farm",
       "description": "Lush green farm fields at sunrise",
       "imageUrl": "https://picsum.photos/seed/farm1/1200/600",
