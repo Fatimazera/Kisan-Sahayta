@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-farm",
+      "description": "Lush green farm fields at sunrise",
+      "imageUrl": "https://picsum.photos/seed/farm1/1200/600",
+      "imageHint": "green farm fields sunrise"
+    },
+    {
+      "id": "fertilizer-cat",
+      "description": "Healthy crops being fertilized",
+      "imageUrl": "https://picsum.photos/seed/fert/600/400",
+      "imageHint": "fertilizer plants"
+    },
+    {
+      "id": "seeds-cat",
+      "description": "Hands holding diverse seeds",
+      "imageUrl": "https://picsum.photos/seed/seeds/600/400",
+      "imageHint": "seeds hands"
+    },
+    {
+      "id": "irrigation-cat",
+      "description": "Modern drip irrigation system in a field",
+      "imageUrl": "https://picsum.photos/seed/water/600/400",
+      "imageHint": "drip irrigation"
+    },
+    {
+      "id": "farmer-working",
+      "description": "A farmer using a tablet in a field",
+      "imageUrl": "https://picsum.photos/seed/farmer/800/600",
+      "imageHint": "farmer technology field"
+    }
+  ]
 }
