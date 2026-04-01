@@ -1,17 +1,20 @@
+
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { QrCode, ShieldCheck, ExternalLink, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function QRVerificationSection() {
   const [showQR, setShowQR] = useState(false);
   const [verifyUrl, setVerifyUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const { t } = useLanguage();
 
   const handleGenerate = () => {
     setLoading(true);
@@ -36,9 +39,9 @@ export function QRVerificationSection() {
                 <Badge variant="outline" className="rounded-full px-4 py-1 text-primary border-primary uppercase font-bold text-[10px] tracking-widest">
                   Trust & Security
                 </Badge>
-                <h2 className="text-4xl font-bold tracking-tight">Authenticity Verification</h2>
+                <h2 className="text-4xl font-bold tracking-tight">{t('qr.title')}</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Verify the legitimacy of your agricultural subsidies instantly. Generate a secure QR code to share or display for official inspections.
+                  {t('qr.description')}
                 </p>
                 <div className="space-y-4 pt-4">
                   <div className="flex items-start gap-3">
@@ -57,11 +60,11 @@ export function QRVerificationSection() {
                     className="rounded-full px-8 h-12 font-bold group"
                   >
                     {loading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <QrCode className="w-4 h-4 mr-2" />}
-                    Generate Verification QR
+                    {t('qr.btn')}
                   </Button>
                 ) : (
                   <Button variant="outline" onClick={() => setShowQR(false)} className="rounded-full">
-                    Reset Generator
+                    {t('qr.reset')}
                   </Button>
                 )}
               </div>
@@ -86,9 +89,9 @@ export function QRVerificationSection() {
                       />
                     </div>
                     <div className="text-center space-y-2">
-                      <p className="text-xs font-bold text-primary uppercase tracking-widest">Scan to Verify</p>
+                      <p className="text-xs font-bold text-primary uppercase tracking-widest">{t('qr.scan')}</p>
                       <Link href={verifyUrl} className="text-sm font-medium hover:underline flex items-center gap-1 justify-center">
-                        Open Verification Page <ExternalLink className="w-3 h-3" />
+                        {t('qr.open')} <ExternalLink className="w-3 h-3" />
                       </Link>
                     </div>
                   </div>

@@ -12,20 +12,21 @@ import {
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { useLanguage, LanguageCode } from "@/context/LanguageContext";
 
-const languages = [
-  { name: "English", native: "English" },
-  { name: "Hindi", native: "हिन्दी" },
-  { name: "Urdu", native: "اردو" },
-  { name: "Marathi", native: "मराठी" },
-  { name: "Gujarati", native: "ગુજરાતી" },
-  { name: "Bengali", native: "বাংলা" },
+const languages: { code: LanguageCode; name: string; native: string }[] = [
+  { code: "en", name: "English", native: "English" },
+  { code: "hi", name: "Hindi", native: "हिन्दी" },
+  { code: "ur", name: "Urdu", native: "اردو" },
+  { code: "mr", name: "Marathi", native: "मराठी" },
+  { code: "gu", name: "Gujarati", native: "ગુજરાતી" },
+  { code: "bn", name: "Bengali", native: "বাংলা" },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentLang, setCurrentLang] = useState("English");
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +35,8 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const currentLangName = languages.find(l => l.code === language)?.name || "English";
 
   return (
     <nav className={cn(
@@ -52,25 +55,25 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10">
-          <Link href="/" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">Home</Link>
-          <Link href="/subsidies" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">About</Link>
-          <Link href="/eligibility" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">Agri-AI</Link>
-          <Link href="/dashboard" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">Portal</Link>
+          <Link href="/" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">{t('nav.home')}</Link>
+          <Link href="/subsidies" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">{t('nav.about')}</Link>
+          <Link href="/eligibility" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">{t('nav.agriAi')}</Link>
+          <Link href="/dashboard" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">{t('nav.portal')}</Link>
           
           <div className="flex items-center gap-6 border-l border-white/10 pl-6">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="rounded-full text-white/80 hover:text-white hover:bg-white/10 flex items-center gap-2 px-4">
                   <Globe className="w-4 h-4" />
-                  <span className="text-xs font-bold tracking-widest uppercase">{currentLang}</span>
+                  <span className="text-xs font-bold tracking-widest uppercase">{currentLangName}</span>
                   <ChevronDown className="w-3 h-3 opacity-50" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
                 {languages.map((lang) => (
                   <DropdownMenuItem 
-                    key={lang.name} 
-                    onClick={() => setCurrentLang(lang.name)}
+                    key={lang.code} 
+                    onClick={() => setLanguage(lang.code)}
                     className="flex justify-between items-center cursor-pointer"
                   >
                     <span>{lang.name}</span>
@@ -81,7 +84,7 @@ export function Navbar() {
             </DropdownMenu>
             
             <Button asChild className="rounded-full px-8 bg-primary text-primary-foreground font-black uppercase tracking-tighter hover:scale-105 transition-transform shadow-xl shadow-primary/20">
-              <Link href="/apply">Apply</Link>
+              <Link href="/apply">{t('nav.apply')}</Link>
             </Button>
           </div>
         </div>
@@ -96,7 +99,7 @@ export function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 {languages.map((lang) => (
-                  <DropdownMenuItem key={lang.name} onClick={() => setCurrentLang(lang.name)}>
+                  <DropdownMenuItem key={lang.code} onClick={() => setLanguage(lang.code)}>
                     {lang.name} ({lang.native})
                   </DropdownMenuItem>
                 ))}
@@ -111,10 +114,10 @@ export function Navbar() {
       {/* Mobile Nav */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 top-20 bg-black/95 backdrop-blur-2xl px-8 py-12 space-y-8 animate-in slide-in-from-top duration-500 z-50">
-          <Link href="/" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link href="/subsidies" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>About</Link>
-          <Link href="/eligibility" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>Agri-AI</Link>
-          <Link href="/dashboard" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>Portal</Link>
+          <Link href="/" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>{t('nav.home')}</Link>
+          <Link href="/subsidies" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>{t('nav.about')}</Link>
+          <Link href="/eligibility" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>{t('nav.agriAi')}</Link>
+          <Link href="/dashboard" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>{t('nav.portal')}</Link>
           
           <div className="pt-8 flex flex-col gap-6 border-t border-white/10">
             <div className="space-y-4">
@@ -122,14 +125,14 @@ export function Navbar() {
                <div className="grid grid-cols-2 gap-3">
                   {languages.map((lang) => (
                     <button 
-                      key={lang.name}
+                      key={lang.code}
                       onClick={() => {
-                        setCurrentLang(lang.name);
+                        setLanguage(lang.code);
                         setIsOpen(false);
                       }}
                       className={cn(
                         "text-left p-3 rounded-xl border transition-all",
-                        currentLang === lang.name 
+                        language === lang.code 
                           ? "bg-primary border-primary text-primary-foreground font-bold" 
                           : "bg-white/5 border-white/10 text-white/60"
                       )}
@@ -142,7 +145,7 @@ export function Navbar() {
             </div>
 
             <Button asChild className="w-full h-16 text-xl rounded-full font-black uppercase tracking-tighter" onClick={() => setIsOpen(false)}>
-              <Link href="/apply">Apply Now</Link>
+              <Link href="/apply">{t('nav.apply')} Now</Link>
             </Button>
           </div>
         </div>
