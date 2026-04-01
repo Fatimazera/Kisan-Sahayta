@@ -1,24 +1,23 @@
-
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
 
 /**
  * AnimatedBackground Component
- * Renders a high-quality sequence of WebP frames onto a canvas to create a smooth,
- * cinematic background video effect. Optimized for performance and responsiveness.
+ * Renders a high-quality sequence of 240 WebP frames onto a canvas to create a smooth,
+ * cinematic background video effect. Optimized with preloading and frame-buffering.
  */
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
-  const frameCount = 191;
+  const frameCount = 240;
   const [hasStarted, setHasStarted] = useState(false);
+  const [loadProgress, setLoadProgress] = useState(0);
 
   useEffect(() => {
     const images: HTMLImageElement[] = [];
     let loadedCount = 0;
 
-    // Preload sequence
     const loadImages = () => {
       for (let i = 0; i < frameCount; i++) {
         const img = new Image();
@@ -26,8 +25,9 @@ export function AnimatedBackground() {
         img.src = `https://uyjvjmfdungodykkmrph.supabase.co/storage/v1/object/public/tree-animation/frame_${frameNum}_delay-0.041s.webp`;
         img.onload = () => {
           loadedCount++;
-          // Start playing once enough frames are buffered for a smooth initial experience
-          if (loadedCount > 25 && !hasStarted) {
+          setLoadProgress(Math.floor((loadedCount / frameCount) * 100));
+          // Start playing once a significant portion (e.g., 40 frames) is buffered
+          if (loadedCount > 40 && !hasStarted) {
             setHasStarted(true);
           }
         };
@@ -49,16 +49,15 @@ export function AnimatedBackground() {
     let frameIndex = 0;
     let animationFrameId: number;
     let lastTime = 0;
-    const frameDelay = 41; // ~24 FPS based on filename "0.041s"
+    const frameDelay = 41; // ~24 FPS matching the 0.041s delay
 
     const animate = (time: number) => {
       if (time - lastTime >= frameDelay) {
         const canvas = canvasRef.current;
-        const ctx = canvas?.getContext('2d');
+        const ctx = canvas?.getContext('2d', { alpha: false });
         const img = imagesRef.current[frameIndex];
 
         if (canvas && ctx && img && img.complete) {
-          // Adjust canvas size to window if needed
           const width = window.innerWidth;
           const height = window.innerHeight;
           
@@ -67,7 +66,6 @@ export function AnimatedBackground() {
             canvas.height = height;
           }
 
-          // Object-fit: cover logic for canvas
           const imgRatio = img.width / img.height;
           const canvasRatio = width / height;
           
@@ -85,9 +83,7 @@ export function AnimatedBackground() {
             y = 0;
           }
 
-          ctx.clearRect(0, 0, width, height);
           ctx.drawImage(img, x, y, drawWidth, drawHeight);
-          
           frameIndex = (frameIndex + 1) % frameCount;
         }
         lastTime = time;
@@ -101,19 +97,27 @@ export function AnimatedBackground() {
   }, [hasStarted]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none bg-black">
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
         style={{ 
           opacity: hasStarted ? 1 : 0, 
-          transition: 'opacity 1.5s ease-in-out',
-          filter: 'brightness(0.7) contrast(1.1)'
+          transition: 'opacity 2s ease-in-out',
+          filter: 'brightness(0.65) contrast(1.1) saturate(1.1)'
         }}
       />
       {!hasStarted && (
-        <div className="absolute inset-0 bg-black animate-pulse flex items-center justify-center">
-           <div className="text-white/20 text-xs font-bold tracking-[0.3em] uppercase">Initializing Cinematic Experience...</div>
+        <div className="absolute inset-0 bg-black flex flex-col items-center justify-center gap-4">
+           <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-primary transition-all duration-300" 
+                style={{ width: `${loadProgress}%` }}
+              />
+           </div>
+           <div className="text-white/30 text-[10px] font-bold tracking-[0.4em] uppercase">
+              Cinematic Sequence Initializing... {loadProgress}%
+           </div>
         </div>
       )}
     </div>

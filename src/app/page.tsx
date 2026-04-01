@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -18,31 +17,32 @@ export default function Home() {
           <AnimatedBackground />
           
           {/* Layered Overlays for Optimal Text Readability & Depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/80 z-10" />
-          <div className="absolute inset-0 bg-black/40 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 z-10" />
+          <div className="absolute inset-0 bg-black/30 z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] z-10" />
         </div>
         
         <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-3xl space-y-8">
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <Badge className="bg-primary/20 text-primary border-primary/40 py-2 px-6 text-sm font-bold backdrop-blur-xl rounded-full mb-8">
+          <div className="max-w-4xl space-y-10">
+            <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
+              <Badge className="bg-primary/20 text-primary border-primary/40 py-2.5 px-8 text-sm font-bold backdrop-blur-3xl rounded-full mb-10 shadow-[0_0_40px_rgba(162,217,150,0.2)]">
                 AGRICULTURAL TECHNOLOGY 3.0
               </Badge>
-              <h1 className="text-6xl md:text-8xl font-bold leading-[1.05] text-white tracking-tight">
-                Smart Subsidies for <br />
+              <h1 className="text-6xl md:text-9xl font-bold leading-[0.95] text-white tracking-tighter">
+                Smart Subsidies <br />
                 <span className="text-primary italic">Better Yields</span>
               </h1>
             </div>
 
-            <p className="text-xl md:text-2xl text-white/90 max-w-xl leading-relaxed animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+            <p className="text-xl md:text-3xl text-white/80 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
               Access Fertilizer, Seed, and Irrigation subsidies with our AI-powered platform. Fast approval, transparent tracking, and comprehensive regional support.
             </p>
 
-            <div className="flex flex-wrap gap-5 pt-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-              <Button size="lg" className="rounded-full text-xl px-12 h-16 shadow-2xl shadow-primary/30 font-bold transition-all hover:scale-105 active:scale-95" asChild>
+            <div className="flex flex-wrap gap-6 pt-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
+              <Button size="lg" className="rounded-full text-xl px-14 h-20 shadow-2xl shadow-primary/40 font-bold transition-all hover:scale-105 active:scale-95 text-primary-foreground bg-primary" asChild>
                 <Link href="/apply">Apply for Subsidy</Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full text-xl px-12 h-16 bg-white/5 backdrop-blur-xl border-white/20 text-white hover:bg-white/10 transition-all hover:scale-105 active:scale-95" asChild>
+              <Button size="lg" variant="outline" className="rounded-full text-xl px-14 h-20 bg-white/5 backdrop-blur-3xl border-white/20 text-white hover:bg-white/15 transition-all hover:scale-105 active:scale-95" asChild>
                 <Link href="/eligibility">Check Eligibility</Link>
               </Button>
             </div>
@@ -50,8 +50,8 @@ export default function Home() {
         </div>
 
         {/* Scroll Visualizer */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce hidden md:block">
-          <div className="w-1 h-14 bg-gradient-to-b from-primary/0 via-primary to-primary/0 rounded-full opacity-40 shadow-[0_0_15px_rgba(162,217,150,0.5)]" />
+        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 animate-bounce hidden md:block opacity-60">
+          <div className="w-1 h-20 bg-gradient-to-b from-primary/0 via-primary to-primary/0 rounded-full shadow-[0_0_20px_rgba(162,217,150,0.8)]" />
         </div>
       </section>
 
