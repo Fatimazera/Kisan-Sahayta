@@ -14,15 +14,15 @@
     },
     {
       "id": "fertilizer-cat",
-      "description": "Healthy crops being fertilized",
-      "imageUrl": "https://picsum.photos/seed/fert/600/400",
-      "imageHint": "fertilizer plants"
+      "description": "Close up of high-quality fertilizer and healthy soil",
+      "imageUrl": "https://picsum.photos/seed/agri-fert-2/800/600",
+      "imageHint": "fertilizer soil"
     },
     {
       "id": "seeds-cat",
-      "description": "Hands holding diverse seeds",
-      "imageUrl": "https://picsum.photos/seed/seeds/600/400",
-      "imageHint": "seeds hands"
+      "description": "Close up of high-yield variety agricultural seeds",
+      "imageUrl": "https://picsum.photos/seed/agri-seeds-2/800/600",
+      "imageHint": "agriculture seeds"
     },
     {
       "id": "irrigation-cat",
