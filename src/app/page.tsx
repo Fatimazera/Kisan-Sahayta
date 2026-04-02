@@ -1,5 +1,10 @@
 
 "use client";
+import { getAuth  } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { app } from "../firebase/config";
+
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -14,8 +19,41 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Home() {
+  
   const { t } = useLanguage();
+  const auth = getAuth(app);
 
+  const[email, setEmail] = useState("");
+  const[password, setPassword] = useState("");
+  
+  
+  const handleSignup = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await sendEmailVerification(userCredential.user);
+      alert("Verification email sent 📩");
+    } catch (error: any) {
+      console.error(error.message);
+    }
+  };
+  const handleLogin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+  
+      await user.reload();
+  
+      if (!user.emailVerified) {
+        alert("Please verify your email first ❌");
+        return;
+      }
+  
+      alert("Login successful ✅");
+    } catch (error: any) {
+      console.error(error.message);
+    }
+  };
+ 
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -39,6 +77,30 @@ export default function Home() {
             <p className="text-xl md:text-2xl text-white/60 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
               {t('hero.subtitle')}
             </p>
+
+            {/* Sign Up Block Moved Below Heading */}
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl max-w-md animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-400">
+              <input
+                type="email"
+                placeholder="Enter email"
+                className="w-full mb-3 p-2 rounded text-black"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+              <input
+                type="password"
+                placeholder="Enter password"
+                className="w-full mb-3 p-2 rounded text-black"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+
+              <button
+                onClick={handleSignup}
+                className="w-full bg-green-500 text-white p-2 rounded font-bold hover:bg-green-600 transition-colors"
+              >
+                Sign Up
+              </button>
+            </div>
 
             <div className="flex items-center gap-10 pt-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
               <Link href="/" className="text-white/80 hover:text-primary text-xl font-bold tracking-widest uppercase transition-colors border-b-2 border-transparent hover:border-primary pb-1">
