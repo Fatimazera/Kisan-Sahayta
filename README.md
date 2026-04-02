@@ -18,8 +18,9 @@ AI Integration: Genkit framework with Google Gemini (2.5 Flash) for eligibility 
 Visualization & QR Codes: Recharts for dashboards and QRCode.react for generating secure authenticity codes.</br>
 
 🌐 Demo
-Live Demo
- (Add your Firebase Hosting URL here)
+Live Demo: https://kisan-sahayta.vercel.app</br>
+
+ 
 
 📄 License
 
