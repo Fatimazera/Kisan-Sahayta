@@ -96,7 +96,7 @@ export default function FarmerDashboard() {
         <div>
           <h1 className="text-3xl font-bold">Welcome back, {farmerName}</h1>
           <p className="text-muted-foreground flex items-center gap-2">
-            <MapPin className="w-4 h-4" /> {profile?.city || 'Regional District'} • ID: {kisanId}
+            <MapPin className="w-4 h-4" /> {profile?.city || 'Regional District'} • Kisan ID: {kisanId}
           </p>
         </div>
         <div className="flex gap-3">

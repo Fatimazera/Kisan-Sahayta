@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, FileUp, ShieldCheck, ArrowRight, ArrowLeft, Loader2 } from "lucide-react";
+import { FileUp, ShieldCheck, ArrowRight, ArrowLeft, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -31,7 +31,7 @@ export default function ApplicationForm() {
     setLoading(false);
     toast({
       title: "Application Submitted Successfully",
-      description: "Your application ID is APP-92837. You will receive SMS updates.",
+      description: "Your application ID is APP-92837. You will receive email updates.",
     });
     router.push("/dashboard");
   };
@@ -85,8 +85,8 @@ export default function ApplicationForm() {
                 <Input id="id" placeholder="1234-5678-9012" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input id="phone" placeholder="+1 (555) 000-0000" />
+                <Label htmlFor="email">Email Address</Label>
+                <Input id="email" type="email" placeholder="john.doe@example.com" />
               </div>
             </div>
           )}

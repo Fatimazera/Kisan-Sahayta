@@ -28,10 +28,6 @@
           "description": "The farmer's email address for communication.",
           "format": "email"
         },
-        "phoneNumber": {
-          "type": "string",
-          "description": "The farmer's contact phone number, used for eligibility checks and notifications."
-        },
         "addressLine1": {
           "type": "string",
           "description": "The first line of the farmer's postal address."
@@ -85,7 +81,6 @@
         "firstName",
         "lastName",
         "email",
-        "phoneNumber",
         "addressLine1",
         "city",
         "state",
@@ -279,7 +274,7 @@
           "schema": {
             "$ref": "#/backend/entities/FarmerProfile"
           },
-          "description": "Global collection for public eligibility lookups. Access is controlled by specific fields (ID and Phone).",
+          "description": "Global collection for public eligibility lookups. Access is controlled by specific fields (ID).",
           "params": [
             {
               "name": "profileId",
