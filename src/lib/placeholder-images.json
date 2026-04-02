@@ -35,6 +35,24 @@
       "description": "A farmer using a tablet in a field",
       "imageUrl": "https://picsum.photos/seed/farmer/800/600",
       "imageHint": "farmer technology field"
+    },
+    {
+      "id": "prod-npk",
+      "description": "Organic NPK Fertilizer Bag",
+      "imageUrl": "https://picsum.photos/seed/npk/400/400",
+      "imageHint": "fertilizer bag"
+    },
+    {
+      "id": "prod-seeds",
+      "description": "Premium Wheat Seeds",
+      "imageUrl": "https://picsum.photos/seed/wheat/400/400",
+      "imageHint": "wheat seeds"
+    },
+    {
+      "id": "prod-pump",
+      "description": "Solar Powered Water Pump",
+      "imageUrl": "https://picsum.photos/seed/pump/400/400",
+      "imageHint": "solar pump"
     }
   ]
 }

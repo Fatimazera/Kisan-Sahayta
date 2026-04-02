@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Sprout, Menu, X, Globe, User, ChevronDown, LogOut, LogIn } from "lucide-react";
+import { Sprout, Menu, X, Globe, User, ChevronDown, LogOut, LogIn, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
   DropdownMenu, 
@@ -62,18 +62,21 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-10">
-          <Link href="/" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">{t('nav.home')}</Link>
-          <Link href="/subsidies" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">{t('nav.about')}</Link>
-          <Link href="/eligibility" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">{t('nav.agriAi')}</Link>
-          <Link href="/dashboard" className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors">{t('nav.portal')}</Link>
+        <div className="hidden md:flex items-center gap-8">
+          <Link href="/" className="text-[10px] font-black tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors">{t('nav.home')}</Link>
+          <Link href="/subsidies" className="text-[10px] font-black tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors">{t('nav.about')}</Link>
+          <Link href="/ecommerce" className="text-[10px] font-black tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors flex items-center gap-1">
+            <ShoppingCart className="w-3 h-3 text-primary" /> {t('nav.ecommerce')}
+          </Link>
+          <Link href="/eligibility" className="text-[10px] font-black tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors">{t('nav.agriAi')}</Link>
+          <Link href="/dashboard" className="text-[10px] font-black tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors">{t('nav.portal')}</Link>
           
           <div className="flex items-center gap-6 border-l border-white/10 pl-6">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="rounded-full text-white/80 hover:text-white hover:bg-white/10 flex items-center gap-2 px-4">
                   <Globe className="w-4 h-4" />
-                  <span className="text-xs font-bold tracking-widest uppercase">{currentLangName}</span>
+                  <span className="text-[10px] font-black tracking-widest uppercase">{currentLangName}</span>
                   <ChevronDown className="w-3 h-3 opacity-50" />
                 </Button>
               </DropdownMenuTrigger>
@@ -96,7 +99,7 @@ export function Navbar() {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="rounded-full text-white hover:bg-white/10 flex items-center gap-2 px-4 border border-white/20">
                     <User className="w-4 h-4 text-primary" />
-                    <span className="text-xs font-bold tracking-widest uppercase truncate max-w-[100px]">{user.phoneNumber || 'Farmer'}</span>
+                    <span className="text-[10px] font-black tracking-widest uppercase truncate max-w-[100px]">{user.displayName || 'Farmer'}</span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -114,7 +117,7 @@ export function Navbar() {
               <PhoneAuthDialog>
                 <Button variant="ghost" className="rounded-full text-white hover:bg-white/10 flex items-center gap-2 px-4 border border-white/20">
                   <LogIn className="w-4 h-4" />
-                  <span className="text-xs font-bold tracking-widest uppercase">{t('nav.signIn')}</span>
+                  <span className="text-[10px] font-black tracking-widest uppercase">{t('nav.signIn')}</span>
                 </Button>
               </PhoneAuthDialog>
             )}
@@ -152,6 +155,7 @@ export function Navbar() {
         <div className="md:hidden fixed inset-0 top-20 bg-black/95 backdrop-blur-2xl px-8 py-12 space-y-8 animate-in slide-in-from-top duration-500 z-50">
           <Link href="/" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>{t('nav.home')}</Link>
           <Link href="/subsidies" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>{t('nav.about')}</Link>
+          <Link href="/ecommerce" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>{t('nav.ecommerce')}</Link>
           <Link href="/eligibility" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>{t('nav.agriAi')}</Link>
           <Link href="/dashboard" className="block text-4xl font-black text-white uppercase tracking-tighter" onClick={() => setIsOpen(false)}>{t('nav.portal')}</Link>
           

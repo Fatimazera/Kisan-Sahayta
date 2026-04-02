@@ -22,7 +22,19 @@ const translations: Record<LanguageCode, any> = {
       portal: "Portal",
       apply: "Apply",
       signIn: "Sign In",
-      signOut: "Sign Out"
+      signOut: "Sign Out",
+      ecommerce: "Ecommerce"
+    },
+    ecommerce: {
+      title: "Kisan Authentic Marketplace",
+      subtitle: "Verified quality seeds, fertilizers, and equipment delivered directly to your farm.",
+      buyNow: "Buy Now",
+      verified: "Certified Authentic",
+      categories: {
+        fertilizers: "Fertilizers",
+        seeds: "Premium Seeds",
+        irrigation: "Irrigation Tools"
+      }
     },
     auth: {
       title: "Farmer Login",
@@ -116,7 +128,19 @@ const translations: Record<LanguageCode, any> = {
       portal: "पोर्टल",
       apply: "आवेदन करें",
       signIn: "लॉग इन करें",
-      signOut: "लॉग आउट"
+      signOut: "लॉग आउट",
+      ecommerce: "ई-कॉमर्स"
+    },
+    ecommerce: {
+      title: "किसान प्रामाणिक मार्केटप्लेस",
+      subtitle: "सत्यापित गुणवत्ता वाले बीज, उर्वरक और उपकरण सीधे आपके खेत तक पहुंचाए जाते हैं।",
+      buyNow: "अभी खरीदें",
+      verified: "प्रमाणित प्रामाणिक",
+      categories: {
+        fertilizers: "उर्वरक",
+        seeds: "प्रीमियम बीज",
+        irrigation: "सिंचाई उपकरण"
+      }
     },
     auth: {
       title: "किसान लॉगिन",
@@ -210,7 +234,19 @@ const translations: Record<LanguageCode, any> = {
       portal: "पोर्टल",
       apply: "درخواست دیں",
       signIn: "سائن ان",
-      signOut: "سائن آؤٹ"
+      signOut: "سائن آؤٹ",
+      ecommerce: "ای کامرس"
+    },
+    ecommerce: {
+      title: "کسان مستند مارکیٹ پلیس",
+      subtitle: "تصدیق شدہ معیاری بیج، کھادیں، اور آلات براہ راست آپ کے فارم پر پہنچائے جاتے ہیں۔",
+      buyNow: "ابھی خریدیں",
+      verified: "تصدیق شدہ اصلی",
+      categories: {
+        fertilizers: "کھادیں",
+        seeds: "پریمیم بیج",
+        irrigation: "آبپاشی کے آلات"
+      }
     },
     auth: {
       title: "کسان لاگ ان",
@@ -249,7 +285,7 @@ const translations: Record<LanguageCode, any> = {
       desc: "سبسڈی کی تفصیلی ٹریکنگ رپورٹ حاصل کرنے کے لیے اپنا ای میل درج کریں۔",
       emailLabel: "ای میل پتہ",
       idLabel: "فارمر آئی ڈی",
-      btn: "मेरी रिपोर्ट भेजें",
+      btn: "میری رپورٹ بھیجیں",
       sending: "بھیج رہا ہے...",
       success: "ای میل بھیج دیا گیا!",
       successDesc: "اپنی تفصیلی سبسڈی اسٹیٹس رپورٹ کے لیے اپنا ان باکس چیک کریں۔",
@@ -304,7 +340,19 @@ const translations: Record<LanguageCode, any> = {
       portal: "पोर्टल",
       apply: "अर्ज करा",
       signIn: "साइन इन करा",
-      signOut: "साइन आउट"
+      signOut: "साइन आउट",
+      ecommerce: "ई-कॉमर्स"
+    },
+    ecommerce: {
+      title: "किसान अस्सल मार्केटप्लेस",
+      subtitle: "सत्यापित दर्जेदार बियाणे, खते आणि उपकरणे थेट तुमच्या शेतापर्यंत पोहोचवली जातात.",
+      buyNow: "आता खरेदी करा",
+      verified: "प्रमाणित अस्सल",
+      categories: {
+        fertilizers: "खते",
+        seeds: "प्रीमियम बियाणे",
+        irrigation: "सिंचन साधने"
+      }
     },
     auth: {
       title: "शेतकरी लॉगिन",
@@ -398,7 +446,19 @@ const translations: Record<LanguageCode, any> = {
       portal: "પોર્ટલ",
       apply: "અરજી કરો",
       signIn: "સાઇન ઇન",
-      signOut: "સાઇન આઉટ"
+      signOut: "સાઇન આઉટ",
+      ecommerce: "ઈ-કોમર્સ"
+    },
+    ecommerce: {
+      title: "કિસાન પ્રમાણિક માર્કેટપ્લેસ",
+      subtitle: "ચકાસાયેલ ગુણવત્તાવાળા બીજ, ખાતર અને સાધનો સીધા તમારા ખેતર સુધી પહોંચાડવામાં આવે છે.",
+      buyNow: "હમણાં ખરીદો",
+      verified: "પ્રમાણિત પ્રમાણિક",
+      categories: {
+        fertilizers: "ખાતરો",
+        seeds: "પ્રીમિયમ બીજ",
+        irrigation: "સિંચાઈ સાધનો"
+      }
     },
     auth: {
       title: "ખેડૂત લોગિન",
@@ -492,7 +552,19 @@ const translations: Record<LanguageCode, any> = {
       portal: "portal",
       apply: "আবেদন করুন",
       signIn: "সাইন ইন",
-      signOut: "সাইন আউট"
+      signOut: "সাইন আউট",
+      ecommerce: "ই-কমার্স"
+    },
+    ecommerce: {
+      title: "কিষাণ খাঁটি মার্কেটপ্লেস",
+      subtitle: "যাচাইকৃত মানের বীজ, সার এবং সরঞ্জাম সরাসরি আপনার খামারে পৌঁছে দেওয়া হয়।",
+      buyNow: "এখনই কিনুন",
+      verified: "প্রত্যয়িত খাঁটি",
+      categories: {
+        fertilizers: "সার",
+        seeds: "প্রিমিয়াম বীজ",
+        irrigation: "সেচ সরঞ্জাম"
+      }
     },
     auth: {
       title: "কৃষক লগইন",
@@ -564,7 +636,7 @@ const translations: Record<LanguageCode, any> = {
       reportTitle: "ভর্তুকি নির্ভরযোগ্যতা রিপোর্ট",
       statusAuthentic: "যাচাইকৃত আসল",
       statusInvalid: "অবৈধ / চিহ্নিত",
-      securityAlert: "সুরক্ষা সতর্কতা: যাচাইকরণ ব্যর্থ",
+      securityAlert: "যাচাইকরণ ব্যর্থ হয়েছে",
       securityAlertDesc: "এই রেকর্ডটি আমাদের লেজারে পাওয়া যায়নি। অনুগ্রহ করে অবিলম্বে রিপোর্ট করুন।",
       beneficiaryDetails: "উপভোক্তার বিবরণ",
       verificationId: "যাচাইকরণ আইডি",
