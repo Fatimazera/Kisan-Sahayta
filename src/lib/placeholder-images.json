@@ -15,13 +15,13 @@
     {
       "id": "fertilizer-cat",
       "description": "Large bag of professional organic fertilizer",
-      "imageUrl": "https://picsum.photos/seed/agri-fert-bag/800/600",
+      "imageUrl": "https://picsum.photos/seed/fertbag2/800/1000",
       "imageHint": "fertilizer bag"
     },
     {
       "id": "seeds-cat",
       "description": "Professional large bag of high-yield seeds",
-      "imageUrl": "https://picsum.photos/seed/agri-seeds-bag/800/600",
+      "imageUrl": "https://picsum.photos/seed/seedbag2/800/1000",
       "imageHint": "seeds bag"
     },
     {
@@ -39,13 +39,13 @@
     {
       "id": "prod-npk",
       "description": "Branded Organic NPK Fertilizer 50kg Bag",
-      "imageUrl": "https://picsum.photos/seed/npk-bag-prod/400/400",
+      "imageUrl": "https://picsum.photos/seed/npkbag/800/1000",
       "imageHint": "fertilizer bag"
     },
     {
       "id": "prod-seeds",
       "description": "Certified Premium Wheat Seeds 10kg Bag",
-      "imageUrl": "https://picsum.photos/seed/wheat-bag-prod/400/400",
+      "imageUrl": "https://picsum.photos/seed/wheatbag/800/1000",
       "imageHint": "seeds bag"
     },
     {
