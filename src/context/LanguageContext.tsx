@@ -48,6 +48,23 @@ const translations: Record<LanguageCode, any> = {
       btn: "Try Eligibility AI",
       verified: "Verified & Secure",
       gov: "Gov-Secure Interface"
+    },
+    verify: {
+      reportTitle: "Subsidy Authenticity Report",
+      statusAuthentic: "Verified Authentic",
+      statusInvalid: "Invalid / Flagged",
+      securityAlert: "Security Alert: Verification Failed",
+      securityAlertDesc: "This subsidy record could not be found in our Distributed Ledger. Please report this discrepancy immediately.",
+      beneficiaryDetails: "Beneficiary Details",
+      verificationId: "Verification ID",
+      securityHash: "Security Hash",
+      printCert: "Print Certificate",
+      reportDiscrepancy: "Report Discrepancy",
+      officialNote: "Verified via Government Distributed Ledger (GDL)",
+      backHome: "Back to Home",
+      category: "Category",
+      issueDate: "Issue Date",
+      expiryDate: "Expiry Date"
     }
   },
   hi: {
@@ -84,14 +101,31 @@ const translations: Record<LanguageCode, any> = {
       btn: "एलिजिबिलिटी एआई आज़माएं",
       verified: "सत्यापित और सुरक्षित",
       gov: "सरकार-सुरक्षित इंटरफ़ेस"
+    },
+    verify: {
+      reportTitle: "सब्सिडी प्रामाणिकता रिपोर्ट",
+      statusAuthentic: "सत्यापित प्रामाणिक",
+      statusInvalid: "अमान्य / चिह्नित",
+      securityAlert: "सुरक्षा चेतावनी: सत्यापन विफल",
+      securityAlertDesc: "यह सब्सिडी रिकॉर्ड हमारे लेजर में नहीं मिला। कृपया तुरंत इस विसंगति की रिपोर्ट करें।",
+      beneficiaryDetails: "लाभार्थी विवरण",
+      verificationId: "सत्यापन आईडी",
+      securityHash: "सुरक्षा हैश",
+      printCert: "प्रमाण पत्र प्रिंट करें",
+      reportDiscrepancy: "विसंगति की रिपोर्ट करें",
+      officialNote: "सरकारी वितरित लेजर (GDL) के माध्यम से सत्यापित",
+      backHome: "होम पर वापस जाएं",
+      category: "श्रेणी",
+      issueDate: "जारी करने की तिथि",
+      expiryDate: "समाप्ति तिथि"
     }
   },
   ur: {
     nav: {
       home: "ہوم",
-      about: "کے بارے میں",
+      about: "کے بارے में",
       agriAi: "ایگری-اے آئی",
-      portal: "پورٹل",
+      portal: "पोर्टल",
       apply: "درخواست دیں"
     },
     hero: {
@@ -120,6 +154,23 @@ const translations: Record<LanguageCode, any> = {
       btn: "اہلیت AI آزمائیں",
       verified: "تصدیق شدہ اور محفوظ",
       gov: "حکومتی محفوظ انٹرفیس"
+    },
+    verify: {
+      reportTitle: "سبسڈی کی تصدیقی رپورٹ",
+      statusAuthentic: "تصدیق شدہ اصلی",
+      statusInvalid: "غیر قانونی / مشکوک",
+      securityAlert: "سیکیورٹی الرٹ: تصدیق ناکام",
+      securityAlertDesc: "یہ ریکارڈ ہمارے سرکاری کھاتے میں نہیں ملا۔ براہ کرم فوری اطلاع دیں۔",
+      beneficiaryDetails: "فائدہ اٹھانے والے کی تفصیلات",
+      verificationId: "تصدیقی آئی ڈی",
+      securityHash: "سیکیورٹی ہیش",
+      printCert: "سرٹیفکیٹ پرنٹ کریں",
+      reportDiscrepancy: "اختلاف کی اطلاع دیں",
+      officialNote: "سرکاری کھاتے (GDL) کے ذریعے تصدیق شدہ",
+      backHome: "ہوم پر واپس جائیں",
+      category: "زمرہ",
+      issueDate: "تاریخ اجراء",
+      expiryDate: "تاریخ خاتمہ"
     }
   },
   mr: {
@@ -156,6 +207,23 @@ const translations: Record<LanguageCode, any> = {
       btn: "पात्रता एआय वापरून पहा",
       verified: "पडताळणी केलेले आणि सुरक्षित",
       gov: "शासकीय-सुरक्षित इंटरफेस"
+    },
+    verify: {
+      reportTitle: "अनुदान प्रमाणिकता अहवाल",
+      statusAuthentic: "सत्यापित अस्सल",
+      statusInvalid: "अमान्य / चिन्हांकित",
+      securityAlert: "सुरक्षा अलर्ट: पडताळणी अयशस्वी",
+      securityAlertDesc: "हे रेकॉर्ड आमच्या लेजरमध्ये आढळले नाही. कृपया त्वरित कळवा.",
+      beneficiaryDetails: "लाभार्थी तपशील",
+      verificationId: "पडताळणी आयडी",
+      securityHash: "सुरक्षा हॅश",
+      printCert: "प्रमाणपत्र प्रिंट करा",
+      reportDiscrepancy: "विसंगती कळवा",
+      officialNote: "शासकीय वितरित लेजर (GDL) द्वारे सत्यापित",
+      backHome: "होम वर परत जा",
+      category: "श्रेणी",
+      issueDate: "जारी केल्याची तारीख",
+      expiryDate: "मुदत संपण्याची तारीख"
     }
   },
   gu: {
@@ -192,6 +260,23 @@ const translations: Record<LanguageCode, any> = {
       btn: "પાત્રતા AI અજમાવી જુઓ",
       verified: "ચકાસાયેલ અને સુરક્ષિત",
       gov: "સરકારી સુરક્ષિત ઈન્ટરફેસ"
+    },
+    verify: {
+      reportTitle: "સબસિડી પ્રમાણિકતા રિપોર્ટ",
+      statusAuthentic: "ચકાસાયેલ અસલી",
+      statusInvalid: "અમાન્ય / ફ્લેગ કરેલ",
+      securityAlert: "સુરક્ષા ચેતવણી: ચકાસણી નિષ્ફળ",
+      securityAlertDesc: "આ રેકોર્ડ અમારા લેજરમાં મળ્યો નથી. કૃપા કરીને તરત જ જાણ કરો.",
+      beneficiaryDetails: "લાભાર્થીની વિગતો",
+      verificationId: "ચકાસણી આઈડી",
+      securityHash: "સુરક્ષા હેશ",
+      printCert: "પ્રમાણપત્ર પ્રિન્ટ કરો",
+      reportDiscrepancy: "વિસંગતતાની જાણ કરો",
+      officialNote: "સરકારી વિતરિત લેજર (GDL) દ્વારા ચકાસાયેલ",
+      backHome: "હોમ પર પાછા જાઓ",
+      category: "કેટેગરી",
+      issueDate: "ઇશ્યુ તારીખ",
+      expiryDate: "સમાપ્તિ તારીખ"
     }
   },
   bn: {
@@ -199,7 +284,7 @@ const translations: Record<LanguageCode, any> = {
       home: "হোম",
       about: "সম্পর্কে",
       agriAi: "এগ্রি-এআই",
-      portal: "পোর্টাল",
+      portal: "portal",
       apply: "আবেদন করুন"
     },
     hero: {
@@ -228,6 +313,23 @@ const translations: Record<LanguageCode, any> = {
       btn: "যোগ্যতা AI ব্যবহার করুন",
       verified: "যাচাইকৃত এবং সুরক্ষিত",
       gov: "সরকারি-সুরক্ষিত ইন্টারফেস"
+    },
+    verify: {
+      reportTitle: "ভর্তুকি নির্ভরযোগ্যতা রিপোর্ট",
+      statusAuthentic: "যাচাইকৃত আসল",
+      statusInvalid: "অবৈধ / চিহ্নিত",
+      securityAlert: "সুরক্ষা সতর্কতা: যাচাইকরণ ব্যর্থ",
+      securityAlertDesc: "এই রেকর্ডটি আমাদের লেজারে পাওয়া যায়নি। অনুগ্রহ করে অবিলম্বে রিপোর্ট করুন।",
+      beneficiaryDetails: "উপভোক্তার বিবরণ",
+      verificationId: "যাচাইকরণ আইডি",
+      securityHash: "সুরক্ষা হ্যাশ",
+      printCert: "শংসাপত্র প্রিন্ট করুন",
+      reportDiscrepancy: "অসংগতি রিপোর্ট করুন",
+      officialNote: "সরকারি বিতরণকৃত লেজার (GDL) দ্বারা যাচাইকৃত",
+      backHome: "হোমে ফিরে যান",
+      category: "বিভাগ",
+      issueDate: "ইস্যু তারিখ",
+      expiryDate: "মেয়াদ শেষ হওয়ার তারিখ"
     }
   }
 };
@@ -239,7 +341,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const keys = key.split('.');
     let result = translations[language];
     for (const k of keys) {
-      if (result[k] === undefined) return key;
+      if (!result || result[k] === undefined) return key;
       result = result[k];
     }
     return result;
