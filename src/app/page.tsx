@@ -10,7 +10,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Sprout, Droplets, FlaskConical, ArrowRight, BrainCircuit, ShieldCheck } from "lucide-react";
+import { Sprout, Droplets, FlaskConical, ArrowRight, BrainCircuit, ShieldCheck, UserPlus } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { QRVerificationSection } from "@/components/QRVerificationSection";
@@ -36,6 +36,7 @@ export default function Home() {
       console.error(error.message);
     }
   };
+
   const handleLogin = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -57,56 +58,67 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[800px] flex items-center overflow-hidden -mt-20 pt-32">
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-40 pb-20">
         <div className="absolute inset-0 z-0">
           <AnimatedBackground />
           {/* Cinematic readability overlays */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 z-10" />
-          <div className="absolute inset-0 bg-black/30 z-10" />
+          <div className="absolute inset-0 bg-black/40 z-10" />
         </div>
         
         <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-6xl space-y-12">
-            <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              <h1 className="text-6xl md:text-[9rem] font-bold leading-[0.85] text-white tracking-tighter font-louize">
+          <div className="max-w-6xl space-y-20">
+            <div className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+              <h1 className="text-6xl md:text-[8rem] font-bold leading-[1.1] text-white tracking-tighter font-louize">
                 {t('hero.welcome')} <br />
                 <span className="text-primary italic">{t('hero.kisanSahayata')}</span>
               </h1>
+              
+              <p className="text-xl md:text-2xl text-white/70 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
+                {t('hero.subtitle')}
+              </p>
             </div>
 
-            <p className="text-xl md:text-2xl text-white/60 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
-              {t('hero.subtitle')}
-            </p>
+            {/* Sign Up Block - Positioned with clear gap */}
+            <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500 max-w-md pt-10">
+              <div className="glass-morphism p-8 rounded-[2rem] border-white/10 bg-white/5 backdrop-blur-xl space-y-6">
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-bold text-white flex items-center gap-2">
+                    <UserPlus className="w-6 h-6 text-primary" /> Join the Platform
+                  </h3>
+                  <p className="text-sm text-white/50">Create your digital agricultural identity today.</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <input
+                    type="email"
+                    placeholder="Enter official email"
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
 
-            {/* Sign Up Block Moved Below Heading */}
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl max-w-md animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-400">
-              <input
-                type="email"
-                placeholder="Enter email"
-                className="w-full mb-3 p-2 rounded text-black"
-                onChange={(e) => setEmail(e.target.value)}
-              />
+                  <input
+                    type="password"
+                    placeholder="Create secure password"
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
 
-              <input
-                type="password"
-                placeholder="Enter password"
-                className="w-full mb-3 p-2 rounded text-black"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-
-              <button
-                onClick={handleSignup}
-                className="w-full bg-green-500 text-white p-2 rounded font-bold hover:bg-green-600 transition-colors"
-              >
-                Sign Up
-              </button>
+                  <Button
+                    onClick={handleSignup}
+                    className="w-full h-14 rounded-xl bg-primary text-primary-foreground font-black text-lg uppercase tracking-tight hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20"
+                  >
+                    Create My Account
+                  </Button>
+                </div>
+              </div>
             </div>
 
-            <div className="flex items-center gap-10 pt-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
-              <Link href="/" className="text-white/80 hover:text-primary text-xl font-bold tracking-widest uppercase transition-colors border-b-2 border-transparent hover:border-primary pb-1">
+            <div className="flex items-center gap-10 pt-8 animate-in fade-in slide-in-from-bottom-14 duration-1000 delay-700">
+              <Link href="/" className="text-white/80 hover:text-primary text-sm font-bold tracking-[0.3em] uppercase transition-colors border-b-2 border-transparent hover:border-primary pb-2">
                 {t('nav.home')}
               </Link>
-              <Link href="/subsidies" className="text-white/80 hover:text-primary text-xl font-bold tracking-widest uppercase transition-colors border-b-2 border-transparent hover:border-primary pb-1">
+              <Link href="/subsidies" className="text-white/80 hover:text-primary text-sm font-bold tracking-[0.3em] uppercase transition-colors border-b-2 border-transparent hover:border-primary pb-2">
                 {t('nav.about')}
               </Link>
             </div>
