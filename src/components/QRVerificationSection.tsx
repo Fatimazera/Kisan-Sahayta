@@ -1,10 +1,10 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { QrCode, ShieldCheck, ExternalLink, Loader2, Info } from "lucide-react";
 import Link from "next/link";
@@ -93,7 +93,7 @@ export function QRVerificationSection() {
                     <div className="text-center space-y-4">
                       <div className="space-y-1">
                         <p className="text-xs font-bold text-primary uppercase tracking-widest">{t('qr.scan')}</p>
-                        <p className="text-[10px] text-muted-foreground max-w-[200px]">Ensure your secondary device has internet access to reach the portal.</p>
+                        <p className="text-[10px] text-muted-foreground max-w-[200px]">Ensure your device has internet access. Workstation previews require browser auth.</p>
                       </div>
                       <Link href={verifyUrl} className="text-sm font-medium hover:underline flex items-center gap-1 justify-center text-primary">
                         {t('qr.open')} <ExternalLink className="w-3 h-3" />
@@ -114,7 +114,7 @@ export function QRVerificationSection() {
           
           <div className="mt-8 flex items-center gap-2 justify-center text-muted-foreground/60 text-xs">
             <Info className="w-3 h-3" />
-            <p>QR codes use an absolute URL based on your current browser origin.</p>
+            <p>Scanning from external devices may require sharing the workstation preview publicly.</p>
           </div>
         </div>
       </div>

@@ -10,6 +10,11 @@ import Link from "next/link";
 import { Suspense, useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
+/**
+ * Public Verification Content
+ * This component is designed to be accessible by any device scanning the QR code.
+ * It does not require user authentication or protected API calls.
+ */
 function VerificationContent() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -17,7 +22,7 @@ function VerificationContent() {
   const id = params.id as string;
   const isAuthentic = searchParams.get('auth') !== 'false';
 
-  // Use memo to ensure stable data on re-renders
+  // Use memo to ensure stable data on re-renders, simulating a database record
   const subsidyData = useMemo(() => ({
     id: id || "SUB-99283-X",
     name: "PM-Kisan Fertilizer Subsidy",
