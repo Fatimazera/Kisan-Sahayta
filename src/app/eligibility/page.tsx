@@ -14,12 +14,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import Link from "next/link";
 
 const formSchema = z.object({
   farmLocation: z.string().min(2, "Location is required"),
   farmSizeAcres: z.coerce.number().min(0.1, "Farm size must be at least 0.1 acres"),
   primaryCrops: z.string().optional(),
-  annualIncomeUSD: z.coerce.number().optional(),
+  annualIncomeINR: z.coerce.number().optional(),
   additionalDetails: z.string().optional(),
 });
 
@@ -33,7 +34,7 @@ export default function EligibilityChecker() {
       farmLocation: "",
       farmSizeAcres: 0,
       primaryCrops: "",
-      annualIncomeUSD: 0,
+      annualIncomeINR: 0,
       additionalDetails: "",
     },
   });
@@ -46,7 +47,7 @@ export default function EligibilityChecker() {
         farmLocation: values.farmLocation,
         farmSizeAcres: values.farmSizeAcres,
         primaryCrops: cropsArray,
-        annualIncomeUSD: values.annualIncomeUSD,
+        annualIncomeINR: values.annualIncomeINR,
         additionalDetails: values.additionalDetails,
       });
       setResult(data);
@@ -109,12 +110,12 @@ export default function EligibilityChecker() {
                     />
                     <FormField
                       control={form.control}
-                      name="annualIncomeUSD"
+                      name="annualIncomeINR"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Annual Income ($)</FormLabel>
+                          <FormLabel>Annual Income (₹)</FormLabel>
                           <FormControl>
-                            <Input type="number" placeholder="2000" {...field} />
+                            <Input type="number" placeholder="150000" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -259,5 +260,3 @@ export default function EligibilityChecker() {
     </div>
   );
 }
-
-import Link from "next/link";

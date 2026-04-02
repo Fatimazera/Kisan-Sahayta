@@ -14,15 +14,15 @@
     },
     {
       "id": "fertilizer-cat",
-      "description": "Close up of high-quality fertilizer and healthy soil",
-      "imageUrl": "https://picsum.photos/seed/agri-fert-2/800/600",
-      "imageHint": "fertilizer soil"
+      "description": "Packaged high-quality organic fertilizer bag in a barn",
+      "imageUrl": "https://picsum.photos/seed/agri-fert-pkg/800/600",
+      "imageHint": "fertilizer package"
     },
     {
       "id": "seeds-cat",
-      "description": "Close up of high-yield variety agricultural seeds",
-      "imageUrl": "https://picsum.photos/seed/agri-seeds-2/800/600",
-      "imageHint": "agriculture seeds"
+      "description": "Professional seed packaging for high-yield crops",
+      "imageUrl": "https://picsum.photos/seed/agri-seeds-pkg/800/600",
+      "imageHint": "seeds package"
     },
     {
       "id": "irrigation-cat",
@@ -38,20 +38,20 @@
     },
     {
       "id": "prod-npk",
-      "description": "Organic NPK Fertilizer Bag",
-      "imageUrl": "https://picsum.photos/seed/npk/400/400",
+      "description": "Branded Organic NPK Fertilizer 50kg Bag",
+      "imageUrl": "https://picsum.photos/seed/npk-bag/400/400",
       "imageHint": "fertilizer bag"
     },
     {
       "id": "prod-seeds",
-      "description": "Premium Wheat Seeds",
-      "imageUrl": "https://picsum.photos/seed/wheat/400/400",
+      "description": "Certified Premium Wheat Seeds 10kg Bag",
+      "imageUrl": "https://picsum.photos/seed/wheat-pkg/400/400",
       "imageHint": "wheat seeds"
     },
     {
       "id": "prod-pump",
-      "description": "Solar Powered Water Pump",
-      "imageUrl": "https://picsum.photos/seed/pump/400/400",
+      "description": "High-efficiency Solar Powered Water Pump unit",
+      "imageUrl": "https://picsum.photos/seed/pump-unit/400/400",
       "imageHint": "solar pump"
     }
   ]

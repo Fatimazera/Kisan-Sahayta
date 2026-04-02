@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Star, ShieldCheck, ShoppingCart, TrendingDown } from "lucide-react";
 import Image from "next/image";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 export default function EcommercePage() {
   const { t } = useLanguage();
@@ -18,8 +19,8 @@ export default function EcommercePage() {
     {
       id: 1,
       category: t('ecommerce.categories.fertilizers'),
-      name: "Organic NPK 10-10-10",
-      price: "$45.00",
+      name: "Organic NPK 10-10-10 (50kg)",
+      price: "₹3,450",
       rating: 4.8,
       img: "prod-npk",
       discount: "10% OFF"
@@ -27,8 +28,8 @@ export default function EcommercePage() {
     {
       id: 2,
       category: t('ecommerce.categories.fertilizers'),
-      name: "Premium Soluble Urea",
-      price: "$32.50",
+      name: "Premium Soluble Urea (25kg)",
+      price: "₹2,250",
       rating: 4.6,
       img: "fertilizer-cat",
       discount: "5% OFF"
@@ -36,8 +37,8 @@ export default function EcommercePage() {
     {
       id: 3,
       category: t('ecommerce.categories.seeds'),
-      name: "HYV Wheat Seeds (Certified)",
-      price: "$28.00",
+      name: "HYV Wheat Seeds (Certified 10kg)",
+      price: "₹1,800",
       rating: 4.9,
       img: "prod-seeds",
       discount: "New"
@@ -45,8 +46,8 @@ export default function EcommercePage() {
     {
       id: 4,
       category: t('ecommerce.categories.seeds'),
-      name: "Hybrid Basmati Rice Seeds",
-      price: "$55.00",
+      name: "Hybrid Basmati Rice Seeds (10kg)",
+      price: "₹4,500",
       rating: 4.7,
       img: "seeds-cat",
       discount: "Best Seller"
@@ -54,8 +55,8 @@ export default function EcommercePage() {
     {
       id: 5,
       category: t('ecommerce.categories.irrigation'),
-      name: "Solar Powered Water Pump",
-      price: "$850.00",
+      name: "Solar Powered Water Pump (3HP)",
+      price: "₹65,000",
       rating: 4.5,
       img: "prod-pump",
       discount: "Subsidy Eligible"
@@ -64,7 +65,7 @@ export default function EcommercePage() {
       id: 6,
       category: t('ecommerce.categories.irrigation'),
       name: "Precision Drip Kit (1 Acre)",
-      price: "$120.00",
+      price: "₹8,500",
       rating: 4.4,
       img: "irrigation-cat",
       discount: "90% Grant"
@@ -106,6 +107,7 @@ export default function EcommercePage() {
                   alt={product.name}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  data-ai-hint={PlaceHolderImages.find(i => i.id === product.img)?.imageHint}
                 />
                 <div className="absolute top-4 left-4 flex gap-2">
                   <Badge className="bg-black/80 backdrop-blur-md text-white border-none rounded-full px-3 py-1 text-[10px] font-bold">
@@ -165,13 +167,13 @@ export default function EcommercePage() {
                 <h4 className="font-bold text-primary flex items-center gap-2">
                   <ShieldCheck className="w-5 h-5" /> Direct Subsidies
                 </h4>
-                <p className="text-sm opacity-70">Prices are automatically adjusted based on your farmer profile and eligible national schemes.</p>
+                <p className="text-sm opacity-70">Prices are automatically adjusted based on your farmer profile and eligible national schemes in INR.</p>
               </div>
               <div className="space-y-2">
                 <h4 className="font-bold text-primary flex items-center gap-2">
                   <ShieldCheck className="w-5 h-5" /> Lab Tested
                 </h4>
-                <p className="text-sm opacity-70">Every batch of seeds and fertilizers is tested at regional labs for maximum efficacy and soil safety.</p>
+                <p className="text-sm opacity-70">Every batch of packaged seeds and fertilizers is tested at regional labs for maximum efficacy and soil safety.</p>
               </div>
             </div>
           </div>
@@ -180,5 +182,3 @@ export default function EcommercePage() {
     </div>
   );
 }
-
-import { cn } from "@/lib/utils";

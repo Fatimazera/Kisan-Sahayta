@@ -27,7 +27,7 @@ const translations: Record<LanguageCode, any> = {
     },
     ecommerce: {
       title: "Kisan Authentic Marketplace",
-      subtitle: "Verified quality seeds, fertilizers, and equipment delivered directly to your farm.",
+      subtitle: "Verified quality packaged seeds, fertilizers, and equipment delivered directly to your farm in INR.",
       buyNow: "Buy Now",
       verified: "Certified Authentic",
       categories: {
@@ -38,7 +38,7 @@ const translations: Record<LanguageCode, any> = {
     },
     auth: {
       title: "Farmer Login",
-      description: "Secure access using your mobile number.",
+      description: "Secure access using your agricultural identity.",
       phoneLabel: "Phone Number",
       otpLabel: "Enter OTP",
       sendCode: "Send OTP",
@@ -133,7 +133,7 @@ const translations: Record<LanguageCode, any> = {
     },
     ecommerce: {
       title: "किसान प्रामाणिक मार्केटप्लेस",
-      subtitle: "सत्यापित गुणवत्ता वाले बीज, उर्वरक और उपकरण सीधे आपके खेत तक पहुंचाए जाते हैं।",
+      subtitle: "सत्यापित गुणवत्ता वाले पैकेटबंद बीज, उर्वरक और उपकरण सीधे आपके खेत तक पहुंचाए जाते हैं (INR में)।",
       buyNow: "अभी खरीदें",
       verified: "प्रमाणित प्रामाणिक",
       categories: {
@@ -144,7 +144,7 @@ const translations: Record<LanguageCode, any> = {
     },
     auth: {
       title: "किसान लॉगिन",
-      description: "अपने मोबाइल नंबर का उपयोग करके सुरक्षित पहुंच।",
+      description: "आपकी कृषि पहचान का उपयोग करके सुरक्षित पहुंच।",
       phoneLabel: "फोन नंबर",
       otpLabel: "ओटीपी दर्ज करें",
       sendCode: "ओटीपी भेजें",
@@ -239,7 +239,7 @@ const translations: Record<LanguageCode, any> = {
     },
     ecommerce: {
       title: "کسان مستند مارکیٹ پلیس",
-      subtitle: "تصدیق شدہ معیاری بیج، کھادیں، اور آلات براہ راست آپ کے فارم پر پہنچائے جاتے ہیں۔",
+      subtitle: "تصدیق شدہ معیاری پیک شدہ بیج، کھادیں، اور آلات براہ راست آپ کے فارم پر پہنچائے جاتے ہیں (INR میں)۔",
       buyNow: "ابھی خریدیں",
       verified: "تصدیق شدہ اصلی",
       categories: {
@@ -250,7 +250,7 @@ const translations: Record<LanguageCode, any> = {
     },
     auth: {
       title: "کسان لاگ ان",
-      description: "آپ کے موبائل نمبر کا استعمال کرتے ہوئے محفوظ رسائی۔",
+      description: "آپ کی زرعی شناخت کا استعمال کرتے ہوئے محفوظ رسائی۔",
       phoneLabel: "فون نمبر",
       otpLabel: "او ٹی پی درج کریں",
       sendCode: "او ٹی پی بھیجیں",
@@ -345,7 +345,7 @@ const translations: Record<LanguageCode, any> = {
     },
     ecommerce: {
       title: "किसान अस्सल मार्केटप्लेस",
-      subtitle: "सत्यापित दर्जेदार बियाणे, खते आणि उपकरणे थेट तुमच्या शेतापर्यंत पोहोचवली जातात.",
+      subtitle: "सत्यापित दर्जेदार सीलबंद बियाणे, खते आणि उपकरणे थेट तुमच्या शेतापर्यंत पोहोचवली जातात (INR मध्ये).",
       buyNow: "आता खरेदी करा",
       verified: "प्रमाणित अस्सल",
       categories: {
@@ -356,7 +356,7 @@ const translations: Record<LanguageCode, any> = {
     },
     auth: {
       title: "शेतकरी लॉगिन",
-      description: "तुमचा मोबाईल नंबर वापरून सुरक्षित प्रवेश.",
+      description: "तुमच्या कृषी ओळखीचा वापर करून सुरक्षित प्रवेश.",
       phoneLabel: "मोबाईल नंबर",
       otpLabel: "ओटीपी प्रविष्ट करा",
       sendCode: "ओटीपी पाठवा",
@@ -451,7 +451,7 @@ const translations: Record<LanguageCode, any> = {
     },
     ecommerce: {
       title: "કિસાન પ્રમાણિક માર્કેટપ્લેસ",
-      subtitle: "ચકાસાયેલ ગુણવત્તાવાળા બીજ, ખાતર અને સાધનો સીધા તમારા ખેતર સુધી પહોંચાડવામાં આવે છે.",
+      subtitle: "ચકાસાયેલ ગુણવત્તાવાળા પેકેટબદ્ધ બીજ, ખાતર અને સાધનો સીધા તમારા ખેતર સુધી પહોંચાડવામાં આવે છે (INR માં).",
       buyNow: "હમણાં ખરીદો",
       verified: "પ્રમાણિત પ્રમાણિક",
       categories: {
@@ -462,7 +462,7 @@ const translations: Record<LanguageCode, any> = {
     },
     auth: {
       title: "ખેડૂત લોગિન",
-      description: "તમારા મોબાઈલ નંબરનો ઉપયોગ કરીને સુરક્ષિત પ્રવેશ.",
+      description: "તમારી કૃષિ ઓળખનો ઉપયોગ કરીને સુરક્ષિત પ્રવેશ.",
       phoneLabel: "મોબાઈલ નંબર",
       otpLabel: "OTP દાખલ કરો",
       sendCode: "OTP મોકલો",
@@ -557,7 +557,7 @@ const translations: Record<LanguageCode, any> = {
     },
     ecommerce: {
       title: "কিষাণ খাঁটি মার্কেটপ্লেস",
-      subtitle: "যাচাইকৃত মানের বীজ, সার এবং সরঞ্জাম সরাসরি আপনার খামারে পৌঁছে দেওয়া হয়।",
+      subtitle: "যাচাইকৃত মানের প্যাকেটজাত বীজ, সার এবং সরঞ্জাম সরাসরি আপনার খামারে পৌঁছে দেওয়া হয় (INR-এ)।",
       buyNow: "এখনই কিনুন",
       verified: "প্রত্যয়িত খাঁটি",
       categories: {
@@ -568,7 +568,7 @@ const translations: Record<LanguageCode, any> = {
     },
     auth: {
       title: "কৃষক লগইন",
-      description: "আপনার মোবাইল নম্বর ব্যবহার করে সুরক্ষিত অ্যাক্সেস।",
+      description: "আপনার কৃষি পরিচয় ব্যবহার করে সুরক্ষিত অ্যাক্সেস।",
       phoneLabel: "ফোন নম্বর",
       otpLabel: "OTP লিখুন",
       sendCode: "OTP পাঠান",

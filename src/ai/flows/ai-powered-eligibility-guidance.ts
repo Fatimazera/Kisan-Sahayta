@@ -31,10 +31,10 @@ const AIPoweredEligibilityGuidanceInputSchema = z.object({
       'Current irrigation methods used (e.g., rain-fed, drip irrigation, sprinkler, canal irrigation).' 
     )
     .optional(),
-  annualIncomeUSD: z
+  annualIncomeINR: z
     .number()
     .min(0)
-    .describe('The estimated annual income of the farmer in USD.')
+    .describe('The estimated annual income of the farmer in Indian Rupees (INR).')
     .optional(),
   previousSubsidiesReceived: z
     .array(z.string())
@@ -109,7 +109,7 @@ Location: {{{farmLocation}}}
 Farm Size: {{{farmSizeAcres}}} acres
 {{#if primaryCrops}}Primary Crops: {{#each primaryCrops}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}{{else}}Primary Crops: Not specified{{/if}}
 {{#if currentIrrigationMethods}}Current Irrigation Methods: {{#each currentIrrigationMethods}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}{{else}}Current Irrigation Methods: Not specified{{/if}}
-{{#if annualIncomeUSD}}Annual Income: $U.S. {{{annualIncomeUSD}}}{{else}}Annual Income: Not specified{{/if}}
+{{#if annualIncomeINR}}Annual Income: ₹ {{{annualIncomeINR}}}{{else}}Annual Income: Not specified{{/if}}
 {{#if previousSubsidiesReceived}}Previous Subsidies Received: {{#each previousSubsidiesReceived}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}{{else}}Previous Subsidies Received: None{{/if}}
 {{#if additionalDetails}}Additional Details: {{{additionalDetails}}}{{else}}Additional Details: None{{/if}}
 
