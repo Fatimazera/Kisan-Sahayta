@@ -62,14 +62,13 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <AnimatedBackground />
           {/* Cinematic readability overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 z-10" />
-          <div className="absolute inset-0 bg-black/40 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/90 z-10" />
         </div>
         
         <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-6xl space-y-20">
-            <div className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              <h1 className="text-6xl md:text-[8rem] font-bold leading-[1.1] text-white tracking-tighter font-louize">
+          <div className="max-w-6xl space-y-16">
+            <div className="space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+              <h1 className="text-6xl md:text-[8rem] font-bold leading-[1.05] text-white tracking-tighter font-louize">
                 {t('hero.welcome')} <br />
                 <span className="text-primary italic">{t('hero.kisanSahayata')}</span>
               </h1>
@@ -79,42 +78,50 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Sign Up Block - Positioned with clear gap */}
-            <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500 max-w-md pt-10">
-              <div className="glass-morphism p-8 rounded-[2rem] border-white/10 bg-white/5 backdrop-blur-xl space-y-6">
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-                    <UserPlus className="w-6 h-6 text-primary" /> Join the Platform
+            {/* Sign Up Block - Enhanced Dark Visibility */}
+            <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500 max-w-lg pt-4">
+              <div className="bg-black/80 backdrop-blur-3xl p-10 rounded-[3rem] border border-white/10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] space-y-8">
+                <div className="space-y-3">
+                  <h3 className="text-3xl font-bold text-white flex items-center gap-3">
+                    <UserPlus className="w-8 h-8 text-primary" /> Join the Platform
                   </h3>
-                  <p className="text-sm text-white/50">Create your digital agricultural identity today.</p>
+                  <p className="text-base text-white/50 font-medium">Create your digital agricultural identity today.</p>
                 </div>
                 
-                <div className="space-y-4">
-                  <input
-                    type="email"
-                    placeholder="Enter official email"
-                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                <div className="space-y-5">
+                  <div className="space-y-2">
+                    <input
+                      type="email"
+                      placeholder="Enter official email"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-lg"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
 
-                  <input
-                    type="password"
-                    placeholder="Create secure password"
-                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <div className="space-y-2">
+                    <input
+                      type="password"
+                      placeholder="Create secure password"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-lg"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
 
                   <Button
                     onClick={handleSignup}
-                    className="w-full h-14 rounded-xl bg-primary text-primary-foreground font-black text-lg uppercase tracking-tight hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20"
+                    className="w-full h-16 rounded-2xl bg-primary text-primary-foreground font-black text-xl uppercase tracking-tight hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-primary/20"
                   >
                     Create My Account
                   </Button>
                 </div>
+                
+                <p className="text-[10px] text-center text-white/30 font-bold uppercase tracking-[0.2em]">
+                  Encrypted & Secure Government Infrastructure
+                </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-10 pt-8 animate-in fade-in slide-in-from-bottom-14 duration-1000 delay-700">
+            <div className="flex items-center gap-10 pt-4 animate-in fade-in slide-in-from-bottom-14 duration-1000 delay-700">
               <Link href="/" className="text-white/80 hover:text-primary text-sm font-bold tracking-[0.3em] uppercase transition-colors border-b-2 border-transparent hover:border-primary pb-2">
                 {t('nav.home')}
               </Link>
