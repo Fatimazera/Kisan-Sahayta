@@ -1,5 +1,45 @@
-# Firebase Studio
+Kisan Sahayata 🌾
 
-This is a NextJS starter in Firebase Studio.
+Kisan Sahayata is a modern, AI-powered web application designed to help farmers track, verify, and understand their subsidy eligibility. The platform ensures transparency, accessibility, and ease of use, enabling farmers to stay informed and empowered.
 
-To get started, take a look at src/app/page.tsx.
+🚀 Features
+Subsidy Status Tracking – Farmers can check the status of government subsidies in real-time. <br/>
+Verification & Authenticity – QR codes are generated for secure verification of subsidy records.
+AI-Assisted Guidance – Google Gemini (2.5 Flash) provides eligibility guidance and drafts multilingual reports.
+Email & Notification Support – Alerts users about subsidy updates and verification results.
+Data Visualization – Interactive dashboards show subsidy history, status, and trends.
+User-Friendly & Responsive UI – Designed with modern, accessible components for all devices.
+🛠️ Technology Stack
+Frontend: Next.js 15 (App Router) for server-side rendering and routing, TypeScript for type safety, Tailwind CSS for responsive styling.
+UI Components: ShadCN UI (Radix UI primitives) and Lucide React for icons.
+State & Forms: React Hook Form for complex form management, Zod for schema validation.
+Backend / Database: Firebase Firestore for real-time data, Firebase Authentication for secure identity management (anonymous/ID-based sessions).
+AI Integration: Genkit framework with Google Gemini (2.5 Flash) for eligibility guidance and report generation.
+Visualization & QR Codes: Recharts for dashboards and QRCode.react for generating secure authenticity codes.
+📦 Installation & Setup
+
+Clone the repository:
+
+git clone <your-repo-link>
+
+Install dependencies:
+
+npm install
+
+Add Firebase configuration in the project:
+
+const app = initializeApp(firebaseConfig);
+
+Run the project locally:
+
+npm run dev
+🌐 Demo
+Live Demo
+ (Add your Firebase Hosting URL here)
+🤝 Contributing
+
+Contributions are welcome! You can improve features, UI/UX, AI workflows, or fix bugs via pull requests.
+
+📄 License
+
+This project is licensed under the MIT License.
