@@ -1,4 +1,8 @@
 
+"use client";
+
+import { useUser, useFirestore, useDoc, useCollection, useMemoFirebase } from "@/firebase";
+import { doc, collection } from "firebase/firestore";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,37 +10,83 @@ import {
   ClipboardList, 
   Clock, 
   CheckCircle2, 
-  XCircle, 
   Upload, 
   Bell, 
-  User, 
   FileText,
   TrendingUp,
-  MapPin
+  MapPin,
+  BrainCircuit,
+  Sprout,
+  Loader2
 } from "lucide-react";
+import Link from "next/link";
 
 export default function FarmerDashboard() {
-  const applications = [
+  const { user, isUserLoading } = useUser();
+  const firestore = useFirestore();
+
+  // Memoize document reference for the farmer profile
+  const profileRef = useMemoFirebase(() => {
+    if (!firestore || !user) return null;
+    return doc(firestore, "users", user.uid, "farmerProfile", "main");
+  }, [firestore, user]);
+
+  // Memoize collection reference for applications
+  const appsRef = useMemoFirebase(() => {
+    if (!firestore || !user) return null;
+    return collection(firestore, "users", user.uid, "applications");
+  }, [firestore, user]);
+
+  const { data: profile, isLoading: isProfileLoading } = useDoc(profileRef);
+  const { data: applications, isLoading: isAppsLoading } = useCollection(appsRef);
+
+  if (isUserLoading || isProfileLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-10 h-10 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="container mx-auto px-4 py-32 text-center">
+        <h2 className="text-3xl font-bold mb-4">Access Denied</h2>
+        <p className="text-muted-foreground mb-8">Please sign in to view your dashboard.</p>
+        <Button asChild className="rounded-full px-8">
+          <Link href="/">Back to Home</Link>
+        </Button>
+      </div>
+    );
+  }
+
+  const farmerName = profile ? `${profile.firstName} ${profile.lastName}` : "Farmer";
+  const kisanId = profile?.uniqueFarmerIdentifier || "N/A";
+
+  const stats = [
     {
-      id: "APP-4921",
-      category: "Fertilizer Subsidy",
-      date: "Oct 12, 2023",
-      status: "Approved",
-      statusColor: "text-green-600 bg-green-50 border-green-200"
+      label: "Total Applications",
+      value: applications?.length || 0,
+      icon: ClipboardList,
+      color: "bg-primary/10 text-primary"
     },
     {
-      id: "APP-5832",
-      category: "Seed Subsidy",
-      date: "Nov 05, 2023",
-      status: "In Review",
-      statusColor: "text-blue-600 bg-blue-50 border-blue-200"
+      label: "Approved",
+      value: applications?.filter(a => a.status === 'Approved').length || 0,
+      icon: CheckCircle2,
+      color: "bg-green-100 text-green-600"
     },
     {
-      id: "APP-6120",
-      category: "Irrigation Support",
-      date: "Feb 10, 2024",
-      status: "Action Required",
-      statusColor: "text-orange-600 bg-orange-50 border-orange-200"
+      label: "Pending",
+      value: applications?.filter(a => ['Draft', 'Pending Review', 'In Review'].includes(a.status)).length || 0,
+      icon: Clock,
+      color: "bg-blue-100 text-blue-600"
+    },
+    {
+      label: "Subsidy Savings",
+      value: "$1,420",
+      icon: TrendingUp,
+      color: "bg-accent/10 text-accent"
     }
   ];
 
@@ -44,9 +94,9 @@ export default function FarmerDashboard() {
     <div className="container mx-auto px-4 py-12">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
         <div>
-          <h1 className="text-3xl font-bold">Welcome back, Farmer Ramesh</h1>
+          <h1 className="text-3xl font-bold">Welcome back, {farmerName}</h1>
           <p className="text-muted-foreground flex items-center gap-2">
-            <MapPin className="w-4 h-4" /> Nashik Regional District • ID: F-102938
+            <MapPin className="w-4 h-4" /> {profile?.city || 'Regional District'} • ID: {kisanId}
           </p>
         </div>
         <div className="flex gap-3">
@@ -60,62 +110,25 @@ export default function FarmerDashboard() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-        <Card className="shadow-sm">
-          <CardContent className="pt-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-primary/10 rounded-xl text-primary">
-                <ClipboardList className="w-6 h-6" />
+        {stats.map((stat, i) => (
+          <Card key={i} className="shadow-sm border-none bg-white">
+            <CardContent className="pt-6">
+              <div className="flex items-center gap-4">
+                <div className={`p-3 rounded-xl ${stat.color}`}>
+                  <stat.icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">{stat.label}</p>
+                  <p className="text-2xl font-bold">{stat.value}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Total Applications</p>
-                <p className="text-2xl font-bold">12</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="shadow-sm">
-          <CardContent className="pt-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-green-100 rounded-xl text-green-600">
-                <CheckCircle2 className="w-6 h-6" />
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Approved</p>
-                <p className="text-2xl font-bold">8</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="shadow-sm">
-          <CardContent className="pt-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-blue-100 rounded-xl text-blue-600">
-                <Clock className="w-6 h-6" />
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Pending</p>
-                <p className="text-2xl font-bold">3</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="shadow-sm">
-          <CardContent className="pt-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-accent/10 rounded-xl text-accent">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Subsidy Savings</p>
-                <p className="text-2xl font-bold">$1,420</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <Card className="lg:col-span-2 shadow-sm">
+        <Card className="lg:col-span-2 shadow-sm border-none bg-white">
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle>Recent Applications</CardTitle>
@@ -124,29 +137,41 @@ export default function FarmerDashboard() {
             <Button variant="ghost" className="text-primary">View All</Button>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              {applications.map((app) => (
-                <div key={app.id} className="flex items-center justify-between p-4 border rounded-xl hover:bg-muted/30 transition-colors">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
-                      <FileText className="w-5 h-5 text-muted-foreground" />
+            {isAppsLoading ? (
+              <div className="flex justify-center p-8">
+                <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+              </div>
+            ) : applications && applications.length > 0 ? (
+              <div className="space-y-4">
+                {applications.map((app) => (
+                  <div key={app.id} className="flex items-center justify-between p-4 border rounded-xl hover:bg-muted/30 transition-colors">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+                        <FileText className="w-5 h-5 text-muted-foreground" />
+                      </div>
+                      <div>
+                        <p className="font-bold">{app.category || 'Subsidy Application'}</p>
+                        <p className="text-xs text-muted-foreground">{app.id} • {new Date(app.applicationDate).toLocaleDateString()}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-bold">{app.category}</p>
-                      <p className="text-xs text-muted-foreground">{app.id} • {app.date}</p>
-                    </div>
+                    <Badge variant="outline" className="px-3 py-1 rounded-full capitalize">
+                      {app.status}
+                    </Badge>
                   </div>
-                  <Badge variant="outline" className={`px-3 py-1 rounded-full ${app.statusColor}`}>
-                    {app.status}
-                  </Badge>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12 border-2 border-dashed rounded-3xl opacity-50">
+                <ClipboardList className="w-12 h-12 mx-auto mb-4" />
+                <p className="font-medium">No applications found</p>
+                <p className="text-sm">Start your first subsidy application today.</p>
+              </div>
+            )}
           </CardContent>
         </Card>
 
         <div className="space-y-8">
-          <Card className="shadow-sm">
+          <Card className="shadow-sm border-none bg-white">
             <CardHeader>
               <CardTitle>Quick Actions</CardTitle>
             </CardHeader>
@@ -183,6 +208,3 @@ export default function FarmerDashboard() {
     </div>
   );
 }
-
-import Link from "next/link";
-import { BrainCircuit, Sprout } from "lucide-react";
