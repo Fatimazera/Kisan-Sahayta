@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
@@ -40,6 +39,18 @@ const translations: Record<LanguageCode, any> = {
       failDesc: "We couldn't find a record with these details. Please verify your ID or register.",
       error: "System Busy",
       errorDesc: "Verification is temporarily unavailable. Please try again later."
+    },
+    email: {
+      title: "Receive Status via Email",
+      desc: "Enter your email to receive a detailed subsidy tracking report.",
+      emailLabel: "Email Address",
+      idLabel: "Farmer ID",
+      btn: "Send My Report",
+      sending: "Sending...",
+      success: "Email Sent!",
+      successDesc: "Check your inbox for your detailed subsidy status report.",
+      fail: "Invalid ID",
+      failDesc: "We could not verify this Farmer ID. Please check and try again."
     },
     categories: {
       title: "Comprehensive Agriculture Solutions",
@@ -108,6 +119,18 @@ const translations: Record<LanguageCode, any> = {
       error: "सिस्टम व्यस्त",
       errorDesc: "सत्यापन अस्थायी रूप से अनुपलब्ध है। कृपया बाद में पुनः प्रयास करें।"
     },
+    email: {
+      title: "ईमेल के माध्यम से स्थिति प्राप्त करें",
+      desc: "विस्तृत सब्सिडी ट्रैकिंग रिपोर्ट प्राप्त करने के लिए अपना ईमेल दर्ज करें।",
+      emailLabel: "ईमेल पता",
+      idLabel: "किसान आईडी",
+      btn: "मेरी रिपोर्ट भेजें",
+      sending: "भेजा जा रहा है...",
+      success: "ईमेल भेज दिया गया!",
+      successDesc: "अपनी विस्तृत सब्सिडी स्थिति रिपोर्ट के लिए अपना इनबॉक्स देखें।",
+      fail: "अमान्य आईडी",
+      failDesc: "हम इस किसान आईडी को सत्यापित नहीं कर सके। कृपया जांचें और पुनः प्रयास करें।"
+    },
     categories: {
       title: "व्यापक कृषि समाधान",
       subtitle: "आपके खेत की उत्पादकता और स्थिरता को अधिकतम करने के लिए तैयार प्रत्यक्ष सरकारी सहायता।",
@@ -174,6 +197,18 @@ const translations: Record<LanguageCode, any> = {
       failDesc: "ہمیں ان تفصیلات کے ساتھ کوئی ریکارڈ نہیں ملا۔ براہ کرم اپنی آئی ڈی کی تصدیق کریں یا رجسٹر کریں۔",
       error: "سسٹم مصروف ہے",
       errorDesc: "تصدیق عارضی طور پر دستیاب نہیں ہے۔ براہ کرم بعد میں دوبارہ کوشش کریں۔"
+    },
+    email: {
+      title: "ای میل کے ذریعے حیثیت حاصل کریں",
+      desc: "سبسڈی کی تفصیلی ٹریکنگ رپورٹ حاصل کرنے کے لیے اپنا ای میل درج کریں۔",
+      emailLabel: "ای میل پتہ",
+      idLabel: "فارمر آئی ڈی",
+      btn: "میری رپورٹ بھیجیں",
+      sending: "بھیج رہا ہے...",
+      success: "ای میل بھیج دیا گیا!",
+      successDesc: "اپنی تفصیلی سبسڈی اسٹیٹس رپورٹ کے لیے اپنا ان باکس چیک کریں۔",
+      fail: "غلط آئی ڈی",
+      failDesc: "ہم اس کسان آئی ڈی کی تصدیق نہیں کر سکے۔ براہ کرم چیک کریں اور دوبارہ کوشش کریں۔"
     },
     categories: {
       title: "جامع زرعی حل",
@@ -242,6 +277,18 @@ const translations: Record<LanguageCode, any> = {
       error: "सिस्टम व्यस्त",
       errorDesc: "पडताळणी तात्पुरती अनुपलब्ध आहे. कृपया नंतर पुन्हा प्रयत्न करा."
     },
+    email: {
+      title: "ईमेलद्वारे स्थिती प्राप्त करा",
+      desc: "तपशीलवार अनुदान ट्रॅकिंग अहवाल प्राप्त करण्यासाठी तुमचा ईमेल प्रविष्ट करा.",
+      emailLabel: "ईमेल पत्ता",
+      idLabel: "शेतकरी आयडी",
+      btn: "माझा अहवाल पाठवा",
+      sending: "पाठवत आहे...",
+      success: "ईमेल पाठवला!",
+      successDesc: "तुमच्या तपशीलवार अनुदान स्थिती अहवालासाठी तुमचे इनबॉक्स तपासा.",
+      fail: "अवैध आयडी",
+      failDesc: "आम्ही या शेतकरी आयडीची पडताळणी करू शकलो नाही. कृपया तपासा आणि पुन्हा प्रयत्न करा."
+    },
     categories: {
       title: "सर्वसमावेशक कृषी उपाय",
       subtitle: "तुमच्या शेतीची उत्पादकता आणि टिकाऊपणा वाढवण्यासाठी तयार केलेले थेट सरकारी सहाय्य.",
@@ -308,6 +355,18 @@ const translations: Record<LanguageCode, any> = {
       failDesc: "અમને આ વિગતો સાથે કોઈ રેકોર્ડ મળ્યો નથી. કૃપા કરીને તમારો આઈડી ચકાસો અથવા નોંધણી કરો.",
       error: "સિસ્ટમ વ્યસ્ત",
       errorDesc: "ચકાસણી કામચલાઉ રીતે અનુપલબ્ધ છે. કૃપા કરીને પછીથી ફરી પ્રયાસ કરો."
+    },
+    email: {
+      title: "ઈમેલ દ્વારા સ્ટેટસ મેળવો",
+      desc: "વિગતવાર સબસિડી ટ્રેકિંગ રિપોર્ટ મેળવવા માટે તમારો ઈમેલ દાખલ કરો.",
+      emailLabel: "ઈમેલ સરનામું",
+      idLabel: "ખેડૂત આઈડી",
+      btn: "મારો રિપોર્ટ મોકલો",
+      sending: "મોકલી રહ્યું છે...",
+      success: "ઈમેલ મોકલાઈ ગયો!",
+      successDesc: "તમારા વિગતવાર સબસિડી સ્ટેટસ રિપોર્ટ માટે તમારું ઇનબોક્સ તપાસો.",
+      fail: "અમાન્ય આઈડી",
+      failDesc: "અમે આ ખેડૂત આઈડી ચકાસી શક્યા નથી. કૃપા કરીને તપાસો અને ફરીથી પ્રયાસ કરો."
     },
     categories: {
       title: "વ્યાપક કૃષિ ઉકેલો",
@@ -376,6 +435,18 @@ const translations: Record<LanguageCode, any> = {
       error: "সিস্টেম ব্যস্ত",
       errorDesc: "যাচাইকরণ সাময়িকভাবে অনুপলব্ধ। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
     },
+    email: {
+      title: "ইমেলের মাধ্যমে স্থিতি পান",
+      desc: "বিস্তারিত ভর্তুকি ট্র্যাকিং রিপোর্ট পেতে আপনার ইমেল লিখুন।",
+      emailLabel: "ইমেল ঠিকানা",
+      idLabel: "কৃষক আইডি",
+      btn: "আমার রিপোর্ট পাঠান",
+      sending: "পাঠানো হচ্ছে...",
+      success: "ইমেল পাঠানো হয়েছে!",
+      successDesc: "আপনার বিস্তারিত ভর্তুকি স্থিতির রিপোর্টের জন্য আপনার ইনবক্স পরীক্ষা করুন।",
+      fail: "অবৈধ আইডি",
+      failDesc: "আমরা এই কৃষক আইডি যাচাই করতে পারিনি। অনুগ্রহ করে পরীক্ষা করুন এবং আবার চেষ্টা করুন।"
+    },
     categories: {
       title: "ব্যাপক কৃষি সমাধান",
       subtitle: "আপনার খামারের উত্পাদনশীলতা এবং স্থায়িত্ব সর্বাধিক করার জন্য উপযুক্ত সরাসরি সরকারি সহায়তা।",
@@ -396,7 +467,7 @@ const translations: Record<LanguageCode, any> = {
       subtitle: "আমাদের AI আপনার সেরা মিলগুলি তাৎক্ষণিকভাবে খুঁজে পেতে জাতীয় প্রকল্পগুলির বিপরীতে আপনার খামার প্রোফাইল বিশ্লেষণ করে।",
       btn: "যোগ্যতা AI ব্যবহার করুন",
       verified: "যাচাইকৃত এবং সুরক্ষিত",
-      gov: "সরকারি-সুরক্ষিত ইন্টারফেস"
+      gov: "সরকারি-সুরक्षित ইন্টারফেস"
     },
     verify: {
       reportTitle: "ভর্তুকি নির্ভরযোগ্যতা রিপোর্ট",

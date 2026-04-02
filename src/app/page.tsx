@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -10,6 +9,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { QRVerificationSection } from "@/components/QRVerificationSection";
 import { QuickEligibilityCheck } from "@/components/QuickEligibilityCheck";
+import { EmailTrackingSection } from "@/components/EmailTrackingSection";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -121,6 +121,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Email Tracking Section */}
+      <EmailTrackingSection />
 
       {/* QR Verification Section */}
       <QRVerificationSection />
