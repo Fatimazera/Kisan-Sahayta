@@ -14,15 +14,15 @@
     },
     {
       "id": "fertilizer-cat",
-      "description": "Professional packaged bag of agricultural fertilizer",
-      "imageUrl": "https://picsum.photos/seed/agri-fert-bag/800/1000",
-      "imageHint": "fertilizer bag"
+      "description": "Lush green grass representing healthy soil",
+      "imageUrl": "https://picsum.photos/seed/green-grass/800/1000",
+      "imageHint": "green grass"
     },
     {
       "id": "seeds-cat",
-      "description": "Certified packaged bag of high-yield agricultural seeds",
-      "imageUrl": "https://picsum.photos/seed/agri-seed-bag/800/1000",
-      "imageHint": "seeds bag"
+      "description": "Close-up of high-quality agricultural seeds",
+      "imageUrl": "https://picsum.photos/seed/seeds-grain/800/1000",
+      "imageHint": "seeds grain"
     },
     {
       "id": "irrigation-cat",
@@ -38,15 +38,15 @@
     },
     {
       "id": "prod-npk",
-      "description": "Branded Organic NPK Fertilizer 50kg Bag",
-      "imageUrl": "https://picsum.photos/seed/npk-bag-packaged/800/1000",
-      "imageHint": "fertilizer bag"
+      "description": "Premium Organic NPK Fertilizer - Soil Health",
+      "imageUrl": "https://picsum.photos/seed/grass-health/800/1000",
+      "imageHint": "green grass"
     },
     {
       "id": "prod-seeds",
-      "description": "Certified Premium Wheat Seeds 10kg Bag",
-      "imageUrl": "https://picsum.photos/seed/wheat-seed-bag/800/1000",
-      "imageHint": "seeds bag"
+      "description": "Certified Premium Wheat Seeds",
+      "imageUrl": "https://picsum.photos/seed/seeds-bag-close/800/1000",
+      "imageHint": "seeds grain"
     },
     {
       "id": "prod-pump",
