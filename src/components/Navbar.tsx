@@ -1,9 +1,8 @@
-
 "use client";
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Sprout, Menu, X, Globe, User, ChevronDown, LogOut, LogIn, ShoppingCart } from "lucide-react";
+import { Sprout, Menu, X, Globe, User, ChevronDown, LogOut, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
   DropdownMenu, 
@@ -14,7 +13,6 @@ import {
 import { cn } from "@/lib/utils";
 import { useLanguage, LanguageCode } from "@/context/LanguageContext";
 import { useUser, useAuth } from "@/firebase";
-import { PhoneAuthDialog } from "./PhoneAuthDialog";
 
 const languages: { code: LanguageCode; name: string; native: string }[] = [
   { code: "en", name: "English", native: "English" },
@@ -94,7 +92,7 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {user ? (
+            {user && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="rounded-full text-white hover:bg-white/10 flex items-center gap-2 px-4 border border-white/20">
@@ -113,13 +111,6 @@ export function Navbar() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-            ) : (
-              <PhoneAuthDialog>
-                <Button variant="ghost" className="rounded-full text-white hover:bg-white/10 flex items-center gap-2 px-4 border border-white/20">
-                  <LogIn className="w-4 h-4" />
-                  <span className="text-[10px] font-black tracking-widest uppercase">{t('nav.signIn')}</span>
-                </Button>
-              </PhoneAuthDialog>
             )}
             
             <Button asChild className="rounded-full px-8 bg-primary text-primary-foreground font-black uppercase tracking-tighter hover:scale-105 transition-transform shadow-xl shadow-primary/20">
@@ -185,16 +176,10 @@ export function Navbar() {
             </div>
 
             <div className="flex flex-col gap-4">
-              {user ? (
+              {user && (
                 <Button onClick={handleSignOut} variant="outline" className="w-full h-16 text-xl rounded-full font-black uppercase tracking-tighter border-white/20 text-white">
                   {t('nav.signOut')}
                 </Button>
-              ) : (
-                <PhoneAuthDialog>
-                  <Button variant="outline" className="w-full h-16 text-xl rounded-full font-black uppercase tracking-tighter border-white/20 text-white">
-                    {t('nav.signIn')}
-                  </Button>
-                </PhoneAuthDialog>
               )}
               <Button asChild className="w-full h-16 text-xl rounded-full font-black uppercase tracking-tighter" onClick={() => setIsOpen(false)}>
                 <Link href="/apply">{t('nav.apply')} Now</Link>
