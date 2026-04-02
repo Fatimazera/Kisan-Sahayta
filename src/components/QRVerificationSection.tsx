@@ -6,7 +6,8 @@ import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { QrCode, ShieldCheck, ExternalLink, Loader2, Info } from "lucide-react";
+import { QrCode, ShieldCheck, ExternalLink, Loader2, Info, AlertTriangle } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -36,7 +37,7 @@ export function QRVerificationSection() {
   return (
     <section className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-8">
           <Card className="overflow-hidden border-none shadow-2xl rounded-[2.5rem] bg-white">
             <div className="grid md:grid-cols-2">
               <div className="p-12 space-y-6">
@@ -93,7 +94,7 @@ export function QRVerificationSection() {
                     <div className="text-center space-y-4">
                       <div className="space-y-1">
                         <p className="text-xs font-bold text-primary uppercase tracking-widest">{t('qr.scan')}</p>
-                        <p className="text-[10px] text-muted-foreground max-w-[200px]">Ensure your device has internet access. Workstation previews require browser auth.</p>
+                        <p className="text-[10px] text-muted-foreground max-w-[200px]">Ensure your device has internet access.</p>
                       </div>
                       <Link href={verifyUrl} className="text-sm font-medium hover:underline flex items-center gap-1 justify-center text-primary">
                         {t('qr.open')} <ExternalLink className="w-3 h-3" />
@@ -112,10 +113,13 @@ export function QRVerificationSection() {
             </div>
           </Card>
           
-          <div className="mt-8 flex items-center gap-2 justify-center text-muted-foreground/60 text-xs">
-            <Info className="w-3 h-3" />
-            <p>Scanning from external devices may require sharing the workstation preview publicly.</p>
-          </div>
+          <Alert className="bg-blue-50 border-blue-100 rounded-2xl">
+            <Info className="h-5 w-5 text-blue-600" />
+            <AlertTitle className="text-blue-800 font-bold">Fixing 401 Access Denied Error</AlertTitle>
+            <AlertDescription className="text-blue-700 text-sm">
+              If your phone shows an error after scanning, go to the <strong>"Ports"</strong> tab in your IDE and set the visibility of port <strong>9002</strong> to <strong>"Public"</strong>. This allows external devices to view the preview safely.
+            </AlertDescription>
+          </Alert>
         </div>
       </div>
     </section>
