@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
@@ -19,7 +20,22 @@ const translations: Record<LanguageCode, any> = {
       about: "About",
       agriAi: "Agri-AI",
       portal: "Portal",
-      apply: "Apply"
+      apply: "Apply",
+      signIn: "Sign In",
+      signOut: "Sign Out"
+    },
+    auth: {
+      title: "Farmer Login",
+      description: "Secure access using your mobile number.",
+      phoneLabel: "Phone Number",
+      otpLabel: "Enter OTP",
+      sendCode: "Send OTP",
+      verifyCode: "Verify & Sign In",
+      placeholder: "+91 9876543210",
+      sending: "Sending...",
+      verifying: "Verifying...",
+      success: "Logged in successfully!",
+      error: "Authentication failed. Please try again."
     },
     hero: {
       welcome: "WELCOME TO",
@@ -98,7 +114,22 @@ const translations: Record<LanguageCode, any> = {
       about: "बारे में",
       agriAi: "एग्री-एआई",
       portal: "पोर्टल",
-      apply: "आवेदन करें"
+      apply: "आवेदन करें",
+      signIn: "लॉग इन करें",
+      signOut: "लॉग आउट"
+    },
+    auth: {
+      title: "किसान लॉगिन",
+      description: "अपने मोबाइल नंबर का उपयोग करके सुरक्षित पहुंच।",
+      phoneLabel: "फोन नंबर",
+      otpLabel: "ओटीपी दर्ज करें",
+      sendCode: "ओटीपी भेजें",
+      verifyCode: "सत्यापित करें और लॉग इन करें",
+      placeholder: "+91 9876543210",
+      sending: "भेजा जा रहा है...",
+      verifying: "सत्यापित किया जा रहा है...",
+      success: "सफलतापूर्वक लॉग इन किया गया!",
+      error: "प्रमाणीकरण विफल रहा। कृपया पुनः प्रयास करें।"
     },
     hero: {
       welcome: "आपका स्वागत है",
@@ -177,7 +208,22 @@ const translations: Record<LanguageCode, any> = {
       about: "کے بارے में",
       agriAi: "ایگری-اے آئی",
       portal: "पोर्टल",
-      apply: "درخواست دیں"
+      apply: "درخواست دیں",
+      signIn: "سائن ان",
+      signOut: "سائن آؤٹ"
+    },
+    auth: {
+      title: "کسان لاگ ان",
+      description: "آپ کے موبائل نمبر کا استعمال کرتے ہوئے محفوظ رسائی۔",
+      phoneLabel: "فون نمبر",
+      otpLabel: "او ٹی پی درج کریں",
+      sendCode: "او ٹی پی بھیجیں",
+      verifyCode: "تصدیق کریں اور سائن ان کریں",
+      placeholder: "+91 9876543210",
+      sending: "بھیج رہا ہے...",
+      verifying: "تصدیق ہو رہی ہے...",
+      success: "کامیابی کے ساتھ لاگ ان ہو گیا!",
+      error: "تصدیق ناکام ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔"
     },
     hero: {
       welcome: "خوش آمدید",
@@ -203,7 +249,7 @@ const translations: Record<LanguageCode, any> = {
       desc: "سبسڈی کی تفصیلی ٹریکنگ رپورٹ حاصل کرنے کے لیے اپنا ای میل درج کریں۔",
       emailLabel: "ای میل پتہ",
       idLabel: "فارمر آئی ڈی",
-      btn: "میری رپورٹ بھیجیں",
+      btn: "मेरी रिपोर्ट भेजें",
       sending: "بھیج رہا ہے...",
       success: "ای میل بھیج دیا گیا!",
       successDesc: "اپنی تفصیلی سبسڈی اسٹیٹس رپورٹ کے لیے اپنا ان باکس چیک کریں۔",
@@ -256,7 +302,22 @@ const translations: Record<LanguageCode, any> = {
       about: "बद्दल",
       agriAi: "एग्री-एआय",
       portal: "पोर्टल",
-      apply: "अर्ज करा"
+      apply: "अर्ज करा",
+      signIn: "साइन इन करा",
+      signOut: "साइन आउट"
+    },
+    auth: {
+      title: "शेतकरी लॉगिन",
+      description: "तुमचा मोबाईल नंबर वापरून सुरक्षित प्रवेश.",
+      phoneLabel: "मोबाईल नंबर",
+      otpLabel: "ओटीपी प्रविष्ट करा",
+      sendCode: "ओटीपी पाठवा",
+      verifyCode: "पडताळणी करा आणि साइन इन करा",
+      placeholder: "+91 9876543210",
+      sending: "पाठवत आहे...",
+      verifying: "पडताळणी करत आहे...",
+      success: "यशस्वीरित्या लॉगिन झाले!",
+      error: "प्रमाणीकरण अयशस्वी. कृपया पुन्हा प्रयत्न करा."
     },
     hero: {
       welcome: "स्वागत आहे",
@@ -335,7 +396,22 @@ const translations: Record<LanguageCode, any> = {
       about: "વિશે",
       agriAi: "એગ્રી-એઆઈ",
       portal: "પોર્ટલ",
-      apply: "અરજી કરો"
+      apply: "અરજી કરો",
+      signIn: "સાઇન ઇન",
+      signOut: "સાઇન આઉટ"
+    },
+    auth: {
+      title: "ખેડૂત લોગિન",
+      description: "તમારા મોબાઈલ નંબરનો ઉપયોગ કરીને સુરક્ષિત પ્રવેશ.",
+      phoneLabel: "મોબાઈલ નંબર",
+      otpLabel: "OTP દાખલ કરો",
+      sendCode: "OTP મોકલો",
+      verifyCode: "ચકાસો અને સાઇન ઇન કરો",
+      placeholder: "+91 9876543210",
+      sending: "મોકલી રહ્યું છે...",
+      verifying: "ચકાસી રહ્યું છે...",
+      success: "સફળતાપૂર્વક લોગ ઇન થયા!",
+      error: "પ્રમાણીકરણ નિષ્ફળ થયું. કૃપા કરીને ફરી પ્રયાસ કરો."
     },
     hero: {
       welcome: "સ્વાગત છે",
@@ -414,7 +490,22 @@ const translations: Record<LanguageCode, any> = {
       about: "সম্পর্কে",
       agriAi: "এগ্রি-এআই",
       portal: "portal",
-      apply: "আবেদন করুন"
+      apply: "আবেদন করুন",
+      signIn: "সাইন ইন",
+      signOut: "সাইন আউট"
+    },
+    auth: {
+      title: "কৃষক লগইন",
+      description: "আপনার মোবাইল নম্বর ব্যবহার করে সুরক্ষিত অ্যাক্সেস।",
+      phoneLabel: "ফোন নম্বর",
+      otpLabel: "OTP লিখুন",
+      sendCode: "OTP পাঠান",
+      verifyCode: "যাচাই করুন এবং সাইন ইন করুন",
+      placeholder: "+91 9876543210",
+      sending: "পাঠানো হচ্ছে...",
+      verifying: "যাচাই করা হচ্ছে...",
+      success: "সাফল্যের সাথে লগ ইন করা হয়েছে!",
+      error: "প্রমাণীকরণ ব্যর্থ হয়েছে। আবার চেষ্টা করুন।"
     },
     hero: {
       welcome: "স্বাগতম",

@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Sprout, Menu, X, Globe, User, ChevronDown } from "lucide-react";
+import { Sprout, Menu, X, Globe, User, ChevronDown, LogOut, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
   DropdownMenu, 
@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useLanguage, LanguageCode } from "@/context/LanguageContext";
+import { useUser, useAuth } from "@/firebase";
+import { PhoneAuthDialog } from "./PhoneAuthDialog";
 
 const languages: { code: LanguageCode; name: string; native: string }[] = [
   { code: "en", name: "English", native: "English" },
@@ -27,6 +29,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const { user } = useUser();
+  const auth = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +39,10 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSignOut = () => {
+    auth.signOut();
+  };
 
   const currentLangName = languages.find(l => l.code === language)?.name || "English";
 
@@ -82,6 +90,34 @@ export function Navbar() {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="rounded-full text-white hover:bg-white/10 flex items-center gap-2 px-4 border border-white/20">
+                    <User className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-bold tracking-widest uppercase truncate max-w-[100px]">{user.phoneNumber || 'Farmer'}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard" className="flex items-center gap-2">
+                      <User className="w-4 h-4" /> Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleSignOut} className="text-destructive focus:text-destructive flex items-center gap-2">
+                    <LogOut className="w-4 h-4" /> {t('nav.signOut')}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <PhoneAuthDialog>
+                <Button variant="ghost" className="rounded-full text-white hover:bg-white/10 flex items-center gap-2 px-4 border border-white/20">
+                  <LogIn className="w-4 h-4" />
+                  <span className="text-xs font-bold tracking-widest uppercase">{t('nav.signIn')}</span>
+                </Button>
+              </PhoneAuthDialog>
+            )}
             
             <Button asChild className="rounded-full px-8 bg-primary text-primary-foreground font-black uppercase tracking-tighter hover:scale-105 transition-transform shadow-xl shadow-primary/20">
               <Link href="/apply">{t('nav.apply')}</Link>
@@ -144,9 +180,22 @@ export function Navbar() {
                </div>
             </div>
 
-            <Button asChild className="w-full h-16 text-xl rounded-full font-black uppercase tracking-tighter" onClick={() => setIsOpen(false)}>
-              <Link href="/apply">{t('nav.apply')} Now</Link>
-            </Button>
+            <div className="flex flex-col gap-4">
+              {user ? (
+                <Button onClick={handleSignOut} variant="outline" className="w-full h-16 text-xl rounded-full font-black uppercase tracking-tighter border-white/20 text-white">
+                  {t('nav.signOut')}
+                </Button>
+              ) : (
+                <PhoneAuthDialog>
+                  <Button variant="outline" className="w-full h-16 text-xl rounded-full font-black uppercase tracking-tighter border-white/20 text-white">
+                    {t('nav.signIn')}
+                  </Button>
+                </PhoneAuthDialog>
+              )}
+              <Button asChild className="w-full h-16 text-xl rounded-full font-black uppercase tracking-tighter" onClick={() => setIsOpen(false)}>
+                <Link href="/apply">{t('nav.apply')} Now</Link>
+              </Button>
+            </div>
           </div>
         </div>
       )}
