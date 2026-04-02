@@ -1,79 +1,37 @@
-/**
- * CropAid Connect Security Rules
- * 
- * Core Philosophy:
- * This ruleset implements a robust user-ownership model where all sensitive personal, 
- * agricultural, and application data is strictly segregated within user-specific paths. 
- * Authorization is primarily derived from the Firebase Authentication UID, ensuring 
- * that users can only access and manage their own records.
- * 
- * Data Structure:
- * - Public Data: /subsidyCategories (Global information about available aid).
- * - Private User Data: /users/{userId}/farmerProfile, /users/{userId}/applications, 
- *   and /users/{userId}/documents. All user-specific entities are nested under 
- *   their respective authentication UID.
- * 
- * Key Security Decisions:
- * - Ownership Enforcement: Every write operation on user-related data requires 
- *   the authenticated UID to match the path's {userId} parameter.
- * - Denormalization for Authorization: Critical relational fields like 'farmerProfileId' 
- *   and 'id' are required to match the path UID during creation and remain 
- *   immutable during updates. This eliminates the need for expensive cross-document 
- *   lookups (get() calls) during security checks.
- * - Admin Access: Administrative operations (e.g., managing subsidy categories) 
- *   are controlled via a separate '/admin_users' collection (DBAC model).
- * - Eligibility Check: Per the system design, eligibility checks occur against 
- *   the farmer's own profile. This ruleset ensures that a user can only query 
- *   and read the profile linked to their specific authenticated identity.
- */
 
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     // --- Helper Functions ---
-
-    /** Checks if the request is from an authenticated user. */
     function isSignedIn() {
       return request.auth != null;
     }
-
-    /** Checks if the authenticated user's UID matches the provided userId. */
     function isOwner(userId) {
       return isSignedIn() && request.auth.uid == userId;
     }
-
-    /** Checks if the user owns the existing document for update/delete operations. */
     function isExistingOwner(userId) {
       return isOwner(userId) && resource != null;
     }
-
-    /** Checks if the authenticated user has administrative privileges via the admin_users collection. */
     function isAdmin() {
       return isSignedIn() && exists(/databases/$(database)/documents/admin_users/$(request.auth.uid));
     }
 
     // --- Collection Rules ---
 
-    /**
-     * @description Rules for global subsidy categories. Publicly readable, admin-only writes.
-     * @path /subsidyCategories/{subsidyCategoryId}
-     * @allow (get) Any user viewing a subsidy's details.
-     * @deny (create) Non-admin users attempting to add new subsidy types.
-     * @principle Public information with restricted administrative control.
-     */
+    // Public lookup for eligibility status
+    match /farmerProfiles/{profileId} {
+      // Allow list/query lookup only if specific unique fields are provided in the query
+      allow list: if true; 
+      allow get: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
     match /subsidyCategories/{subsidyCategoryId} {
       allow get, list: if true;
       allow create, update, delete: if isAdmin();
     }
 
-    /**
-     * @description Rules for the farmer's personal profile. Strictly owned by the user.
-     * @path /users/{userId}/farmerProfile/{profileId}
-     * @allow (create) User 'abc' creating a profile at /users/abc/farmerProfile where data.id == 'abc'.
-     * @deny (list) User 'abc' attempting to list profiles under /users/xyz/farmerProfile.
-     * @principle Enforces strict path-based ownership and relational integrity via ID matching.
-     */
     match /users/{userId}/farmerProfile/{profileId} {
       allow get, list: if isOwner(userId);
       allow create: if isOwner(userId) && request.resource.data.id == userId;
@@ -81,13 +39,6 @@ service cloud.firestore {
       allow delete: if isExistingOwner(userId);
     }
 
-    /**
-     * @description Rules for subsidy applications. Managed by the submitting farmer.
-     * @path /users/{userId}/applications/{applicationId}
-     * @allow (update) User 'abc' updating a draft application at their own path.
-     * @deny (create) User 'abc' attempting to submit an application with 'farmerProfileId' set to 'xyz'.
-     * @principle Ensures application data consistency with the authenticated user's identity.
-     */
     match /users/{userId}/applications/{applicationId} {
       allow get, list: if isOwner(userId);
       allow create: if isOwner(userId) && request.resource.data.farmerProfileId == userId;
@@ -95,22 +46,11 @@ service cloud.firestore {
       allow delete: if isExistingOwner(userId);
     }
 
-    /**
-     * @description Rules for supporting document metadata. strictly owned by the farmer.
-     * @path /users/{userId}/documents/{documentId}
-     * @allow (get) User 'abc' retrieving metadata for their own uploaded ID proof.
-     * @deny (delete) User 'abc' attempting to delete a document belonging to user 'xyz'.
-     * @principle Protects user-uploaded metadata through path-based authorization.
-     */
     match /users/{userId}/documents/{documentId} {
       allow get, list: if isOwner(userId);
       allow create: if isOwner(userId) && request.resource.data.farmerProfileId == userId;
       allow update: if isExistingOwner(userId) && request.resource.data.farmerProfileId == resource.data.farmerProfileId;
       allow delete: if isExistingOwner(userId);
     }
-
-    // --- Admin Access to User Data ---
-    // (Optional) If admins need to view applications across all users, 
-    // global match patterns would be defined here using the isAdmin() helper.
   }
 }

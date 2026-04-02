@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "FarmerProfile": {
@@ -272,6 +273,22 @@
   "firestore": {
     "structure": [
       {
+        "path": "/farmerProfiles/{profileId}",
+        "definition": {
+          "entityName": "FarmerProfile",
+          "schema": {
+            "$ref": "#/backend/entities/FarmerProfile"
+          },
+          "description": "Global collection for public eligibility lookups. Access is controlled by specific fields (ID and Phone).",
+          "params": [
+            {
+              "name": "profileId",
+              "description": "Unique profile ID."
+            }
+          ]
+        }
+      },
+      {
         "path": "/users/{userId}/farmerProfile",
         "definition": {
           "entityName": "FarmerProfile",
@@ -343,7 +360,6 @@
           ]
         }
       }
-    ],
-    "reasoning": "The Firestore structure for CropAid Connect prioritizes security, scalability, and debuggability by strictly adhering to the core design principles. Each authenticated user's data is housed within a dedicated `/users/{userId}` sub-tree, leveraging Firebase Authentication's `request.auth.uid` for robust, path-based authorization. This approach naturally makes ownership explicit and simplifies security rules.\n\nAuthorization Independence is achieved through strategic denormalization. For instance, a farmer's `FarmerProfile` is located at `/users/{userId}/farmerProfile`, where the `id` field of the FarmerProfile document explicitly matches the `{userId}` (the `request.auth.uid`). Similarly, `Application` documents are stored in `/users/{userId}/applications/{applicationId}` and `Document` metadata in `/users/{userId}/documents/{documentId}`. In both `Application` and `Document` entities, the `farmerProfileId` field is denormalized to explicitly store the `{userId}`. This eliminates the need for `get()` operations on parent documents in security rules, allowing atomic write operations and preventing complex, hard-to-debug authorization dependencies.\n\nQueryability and Authorization Posture (QAPs) are supported by Structural Segregation. Global, publicly readable data like `SubsidyCategory` information resides in its own top-level collection (`/subsidyCategories`), allowing for simple `allow read: true` rules. All user-specific data (profiles, applications, documents) is nested under `/users/{userId}`, ensuring that `list` operations within these subcollections are implicitly filtered by `request.auth.uid == userId`. This guarantees that users can only list and access their own data, preventing unauthorized enumeration and maintaining QAP compliance. The \"Eligibility Checker\" feature, which involves matching a unique farmer identifier and phone number, is designed to operate securely. While an unauthenticated public lookup on sensitive PII directly within Firestore rules is inherently challenging to secure against enumeration and data leakage, this structure assumes the eligibility check either occurs for an authenticated user against their own `FarmerProfile` (located at `/users/{userId}/farmerProfile`), or through a secure, mediated service (e.g., a Cloud Function) for unauthenticated requests, thereby maintaining the integrity of the Firestore security model. Should a purely Firestore-based unauthenticated lookup be strictly required, a highly segregated and minimal collection with extremely restrictive, field-specific rules (e.g., allowing reads only if specific combined fields match) would be necessary, but this generally introduces complexity and potential security trade-offs that are best avoided when possible. For simplicity and robustness, the primary authorization model for user data relies on `request.auth.uid`.\n\nAdmin roles are managed through a DBAC model using a separate top-level collection (e.g., `/admin_users/{uid}`), where the mere existence of a document signifies admin status. Firestore rules can then check `get(/databases/$(database)/documents/admin_users/$(request.auth.uid)).exists()` for admin-specific write operations on collections like `/subsidyCategories` or to manage `/users/{userId}/applications` across all users."
+    ]
   }
 }

@@ -27,6 +27,20 @@ const translations: Record<LanguageCode, any> = {
       kisanSahayata: "KISAN SAHAYATA",
       subtitle: "Modernizing agricultural progress through cinematic intelligence. A seamless gateway for India's farming community."
     },
+    eligibility: {
+      title: "Quick Eligibility Status",
+      desc: "Instantly check if you are registered for national subsidies.",
+      idLabel: "Kisan ID / Farmer ID",
+      phoneLabel: "Registered Phone Number",
+      btn: "Check Status",
+      checking: "Checking...",
+      success: "Farmer Found",
+      successDesc: "Your profile is active and eligible for subsidies.",
+      fail: "No Record Found",
+      failDesc: "We couldn't find a record with these details. Please verify your ID or register.",
+      error: "System Busy",
+      errorDesc: "Verification is temporarily unavailable. Please try again later."
+    },
     categories: {
       title: "Comprehensive Agriculture Solutions",
       subtitle: "Direct government support tailored to maximize your farm's productivity and sustainability.",
@@ -79,6 +93,20 @@ const translations: Record<LanguageCode, any> = {
       welcome: "आपका स्वागत है",
       kisanSahayata: "किसान सहायता",
       subtitle: "सिनेमैटिक इंटेलिजेंस के माध्यम से कृषि प्रगति का आधुनिकीकरण। भारत के किसान समुदाय के लिए एक सहज प्रवेश द्वार।"
+    },
+    eligibility: {
+      title: "त्वरित पात्रता स्थिति",
+      desc: "तुरंत जांचें कि क्या आप राष्ट्रीय सब्सिडी के लिए पंजीकृत हैं।",
+      idLabel: "किसान आईडी / किसान आईडी",
+      phoneLabel: "पंजीकृत फोन नंबर",
+      btn: "स्थिति जांचें",
+      checking: "जांच की जा रही है...",
+      success: "किसान मिला",
+      successDesc: "आपका प्रोफाइल सक्रिय है और आप सब्सिडी के लिए पात्र हैं।",
+      fail: "कोई रिकॉर्ड नहीं मिला",
+      failDesc: "हमें इन विवरणों के साथ कोई रिकॉर्ड नहीं मिला। कृपया अपनी आईडी सत्यापित करें या पंजीकरण करें।",
+      error: "सिस्टम व्यस्त",
+      errorDesc: "सत्यापन अस्थायी रूप से अनुपलब्ध है। कृपया बाद में पुनः प्रयास करें।"
     },
     categories: {
       title: "व्यापक कृषि समाधान",
@@ -133,6 +161,20 @@ const translations: Record<LanguageCode, any> = {
       kisanSahayata: "کسان سہایتا",
       subtitle: "سنیماٹک انٹیلیجنس کے ذریعے زرعی ترقی کو جدید بنانا۔ ہندوستان کی کسان برادری کے لیے ایک ہموار گیٹ وے۔"
     },
+    eligibility: {
+      title: "اہلیت کی فوری حیثیت",
+      desc: "فوری طور پر چیک کریں کہ آیا آپ قومی سبسڈی کے لیے رجسٹرڈ ہیں۔",
+      idLabel: "کسان آئی ڈی / فارمر آئی ڈی",
+      phoneLabel: "رجسٹرڈ فون نمبر",
+      btn: "حیثیت چیک کریں",
+      checking: "چیک کر رہا ہے...",
+      success: "کسان مل گیا",
+      successDesc: "آپ کا پروفائل فعال ہے اور آپ سبسڈی کے اہل ہیں۔",
+      fail: "کوئی ریکارڈ نہیں ملا",
+      failDesc: "ہمیں ان تفصیلات کے ساتھ کوئی ریکارڈ نہیں ملا۔ براہ کرم اپنی آئی ڈی کی تصدیق کریں یا رجسٹر کریں۔",
+      error: "سسٹم مصروف ہے",
+      errorDesc: "تصدیق عارضی طور پر دستیاب نہیں ہے۔ براہ کرم بعد میں دوبارہ کوشش کریں۔"
+    },
     categories: {
       title: "جامع زرعی حل",
       subtitle: "براہ راست حکومتی مدد جو آپ کے فارم کی پیداواری صلاحیت اور پائیداری کو زیادہ سے زیادہ کرنے کے لیے تیار کی گئی ہے۔",
@@ -150,7 +192,7 @@ const translations: Record<LanguageCode, any> = {
     ai: {
       badge: "ایگری انٹیلیجنس فعال",
       title: "سیکنڈوں میں اپنی اہلیت تلاش کریں",
-      subtitle: "ہمارا AI آپ کے بہترین میچز کو فوری طور پر تلاش کرنے کے لیے قومی اسکیموں کے خلاف آپ کے فارم پروفائل کا تجزیہ کرتا ہے۔",
+      subtitle: "ہمارا AI آپ کے بہترین میچز کو فوری طور پر تلاش کرنے کے لیے قومی اسکیموں کے خلاف آپ کے فارم پروفائل کا تحلیل کرتا ہے۔",
       btn: "اہلیت AI آزمائیں",
       verified: "تصدیق شدہ اور محفوظ",
       gov: "حکومتی محفوظ انٹرفیس"
@@ -186,6 +228,20 @@ const translations: Record<LanguageCode, any> = {
       kisanSahayata: "किसान सहायता",
       subtitle: "सिनेमॅटिक इंटेलिजन्सद्वारे कृषी प्रगतीचे आधुनिकीकरण. भारताच्या शेतकरी समुदायासाठी एक अखंड प्रवेशद्वार."
     },
+    eligibility: {
+      title: "त्वरित पात्रता स्थिती",
+      desc: "तुम्ही राष्ट्रीय अनुदानासाठी नोंदणीकृत आहात की नाही ते त्वरित तपासा.",
+      idLabel: "किसान आयडी / शेतकरी आयडी",
+      phoneLabel: "नोंदणीकृत फोन नंबर",
+      btn: "स्थिती तपासा",
+      checking: "तपासत आहे...",
+      success: "शेतकरी सापडला",
+      successDesc: "तुमचे प्रोफाइल सक्रिय आहे आणि तुम्ही अनुदानासाठी पात्र आहात.",
+      fail: "रेकॉर्ड सापडला नाही",
+      failDesc: "आम्हाला या तपशिलांसह रेकॉर्ड सापडला नाही. कृपया तुमचा आयडी सत्यापित करा किंवा नोंदणी करा.",
+      error: "सिस्टम व्यस्त",
+      errorDesc: "पडताळणी तात्पुरती अनुपलब्ध आहे. कृपया नंतर पुन्हा प्रयत्न करा."
+    },
     categories: {
       title: "सर्वसमावेशक कृषी उपाय",
       subtitle: "तुमच्या शेतीची उत्पादकता आणि टिकाऊपणा वाढवण्यासाठी तयार केलेले थेट सरकारी सहाय्य.",
@@ -194,7 +250,7 @@ const translations: Record<LanguageCode, any> = {
     },
     qr: {
       title: "प्रमाणिकता पडताळणी",
-      description: "तुमच्या कृषी अनुदानाच्या वैधतेची त्वरित पडताळणी करा. अधिकृत तपासणीसाठी शेअर करण्यासाठी किंवा प्रदर्शित करण्यासाठी सुरक्षित क्यूआर कोड तयार करा.",
+      description: "तुमच्या कृषी अनुदानाच्या वैधतेची त्वरित पडताळणी करा. अधिकधिक तपासणीसाठी शेअर करण्यासाठी किंवा प्रदर्शित करण्यासाठी सुरक्षित क्यूआर कोड तयार करा.",
       btn: "पडताळणी क्यूआर तयार करा",
       reset: "रिसेट जनरेटर",
       scan: "पडताळणीसाठी स्कॅन करा",
@@ -238,6 +294,20 @@ const translations: Record<LanguageCode, any> = {
       welcome: "સ્વાગત છે",
       kisanSahayata: "કિસાન સહાયતા",
       subtitle: "સિનેમેટિક ઇન્ટેલિજન્સ દ્વારા કૃષિ પ્રગતિનું આધુનિકીકરણ. ભારતના ખેડૂત સમુદાય માટે સીમલેસ ગેટવે."
+    },
+    eligibility: {
+      title: "ઝડપી પાત્રતા સ્થિતિ",
+      desc: "તમે રાષ્ટ્રીય સબસિડી માટે નોંધાયેલા છો કે નહીં તે તરત જ તપાસો.",
+      idLabel: "કિસાન આઈડી / ખેડૂત આઈડી",
+      phoneLabel: "નોંધાયેલ ફોન નંબર",
+      btn: "સ્થિતિ તપાસો",
+      checking: "તપાસી રહ્યું છે...",
+      success: "ખેડૂત મળી આવ્યો",
+      successDesc: "તમારી પ્રોફાઇલ સક્રિય છે અને તમે સબસિડી માટે પાત્ર છો.",
+      fail: "કોઈ રેકોર્ડ મળ્યો નથી",
+      failDesc: "અમને આ વિગતો સાથે કોઈ રેકોર્ડ મળ્યો નથી. કૃપા કરીને તમારો આઈડી ચકાસો અથવા નોંધણી કરો.",
+      error: "સિસ્ટમ વ્યસ્ત",
+      errorDesc: "ચકાસણી કામચલાઉ રીતે અનુપલબ્ધ છે. કૃપા કરીને પછીથી ફરી પ્રયાસ કરો."
     },
     categories: {
       title: "વ્યાપક કૃષિ ઉકેલો",
@@ -291,6 +361,20 @@ const translations: Record<LanguageCode, any> = {
       welcome: "স্বাগতম",
       kisanSahayata: "কিষাণ সহায়তা",
       subtitle: "সিনেমাটিক ইন্টেলিজেন্সের মাধ্যমে কৃষি অগ্রগতির আধুনিকীকরণ। ভারতের কৃষক সম্প্রদায়ের জন্য একটি নিরবচ্ছিন্ন প্রবেশদ্বার।"
+    },
+    eligibility: {
+      title: "দ্রুত যোগ্যতা স্থিতি",
+      desc: "আপনি জাতীয় ভর্তুকির জন্য নিবন্ধিত কিনা তা তাৎক্ষণিকভাবে পরীক্ষা করুন।",
+      idLabel: "কিষাণ আইডি / কৃষক আইডি",
+      phoneLabel: "নিবন্ধিত ফোন নম্বর",
+      btn: "স্থিতি পরীক্ষা করুন",
+      checking: "পরীক্ষা করা হচ্ছে...",
+      success: "কৃষক পাওয়া গেছে",
+      successDesc: "আপনার প্রোফাইল সক্রিয় এবং আপনি ভর্তুকির জন্য যোগ্য।",
+      fail: "কোন রেকর্ড পাওয়া যায়নি",
+      failDesc: "আমরা এই বিবরণ সহ কোন রেকর্ড খুঁজে পাইনি। আপনার আইডি যাচাই করুন বা নিবন্ধন করুন।",
+      error: "সিস্টেম ব্যস্ত",
+      errorDesc: "যাচাইকরণ সাময়িকভাবে অনুপলব্ধ। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
     },
     categories: {
       title: "ব্যাপক কৃষি সমাধান",

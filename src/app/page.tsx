@@ -5,10 +5,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Sprout, Droplets, FlaskConical, ArrowRight, BrainCircuit, ShieldCheck } from "lucide-react";
+import { Sprout, Droplets, FlaskConical, ArrowRight, BrainCircuit, ShieldCheck, Search } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { QRVerificationSection } from "@/components/QRVerificationSection";
+import { QuickEligibilityCheck } from "@/components/QuickEligibilityCheck";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -55,6 +56,9 @@ export default function Home() {
           <div className="w-[1px] h-20 bg-gradient-to-b from-transparent via-white to-transparent" />
         </div>
       </section>
+
+      {/* Quick Eligibility Check Section */}
+      <QuickEligibilityCheck />
 
       {/* Subsidy Categories */}
       <section className="py-32 container mx-auto px-4 bg-background">
