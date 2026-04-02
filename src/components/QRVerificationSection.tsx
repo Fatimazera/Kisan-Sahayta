@@ -1,12 +1,12 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { QrCode, ShieldCheck, ExternalLink, Loader2 } from "lucide-react";
+import { QrCode, ShieldCheck, ExternalLink, Loader2, Info } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -21,12 +21,16 @@ export function QRVerificationSection() {
     // Randomly determine authenticity for demonstration
     const isAuthentic = Math.random() > 0.5;
     
+    // Ensure we capture the absolute origin for cross-device compatibility
+    const origin = typeof window !== 'undefined' ? window.location.origin : '';
+    const uniqueId = `SUB-${Math.floor(Math.random() * 90000) + 10000}-X`;
+    const fullUrl = `${origin}/verify/${uniqueId}?auth=${isAuthentic}`;
+    
     setTimeout(() => {
-      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-      setVerifyUrl(`${baseUrl}/verify/SUB-${Math.floor(Math.random() * 90000) + 10000}-X?auth=${isAuthentic}`);
+      setVerifyUrl(fullUrl);
       setShowQR(true);
       setLoading(false);
-    }, 800);
+    }, 600);
   };
 
   return (
@@ -75,22 +79,23 @@ export function QRVerificationSection() {
                     <div className="p-6 bg-white rounded-3xl shadow-xl border-4 border-primary/20">
                       <QRCodeSVG 
                         value={verifyUrl} 
-                        size={200}
-                        level="H"
+                        size={220}
+                        level="Q"
                         includeMargin={false}
                         imageSettings={{
                           src: "https://uyjvjmfdungodykkmrph.supabase.co/storage/v1/object/public/tree-animation/frame_000_delay-0.041s.webp",
-                          x: undefined,
-                          y: undefined,
-                          height: 40,
-                          width: 40,
+                          height: 30,
+                          width: 30,
                           excavate: true,
                         }}
                       />
                     </div>
-                    <div className="text-center space-y-2">
-                      <p className="text-xs font-bold text-primary uppercase tracking-widest">{t('qr.scan')}</p>
-                      <Link href={verifyUrl} className="text-sm font-medium hover:underline flex items-center gap-1 justify-center">
+                    <div className="text-center space-y-4">
+                      <div className="space-y-1">
+                        <p className="text-xs font-bold text-primary uppercase tracking-widest">{t('qr.scan')}</p>
+                        <p className="text-[10px] text-muted-foreground max-w-[200px]">Ensure your secondary device has internet access to reach the portal.</p>
+                      </div>
+                      <Link href={verifyUrl} className="text-sm font-medium hover:underline flex items-center gap-1 justify-center text-primary">
                         {t('qr.open')} <ExternalLink className="w-3 h-3" />
                       </Link>
                     </div>
@@ -106,6 +111,11 @@ export function QRVerificationSection() {
               </div>
             </div>
           </Card>
+          
+          <div className="mt-8 flex items-center gap-2 justify-center text-muted-foreground/60 text-xs">
+            <Info className="w-3 h-3" />
+            <p>QR codes use an absolute URL based on your current browser origin.</p>
+          </div>
         </div>
       </div>
     </section>

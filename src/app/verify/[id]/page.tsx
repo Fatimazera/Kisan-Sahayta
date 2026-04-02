@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
 function VerificationContent() {
@@ -17,8 +17,8 @@ function VerificationContent() {
   const id = params.id as string;
   const isAuthentic = searchParams.get('auth') !== 'false';
 
-  // Mock data for the verification result
-  const subsidyData = {
+  // Use memo to ensure stable data on re-renders
+  const subsidyData = useMemo(() => ({
     id: id || "SUB-99283-X",
     name: "PM-Kisan Fertilizer Subsidy",
     category: "Fertilizer & Soil Health",
@@ -27,7 +27,7 @@ function VerificationContent() {
     issueDate: isAuthentic ? "Jan 15, 2024" : "N/A",
     expiryDate: isAuthentic ? "Dec 31, 2024" : "N/A",
     authenticityHash: isAuthentic ? "6f9a2b8e...c4d2" : "INVALID_HASH_000"
-  };
+  }), [id, isAuthentic]);
 
   return (
     <div className="min-h-screen bg-muted/20 py-20 px-4">
@@ -53,7 +53,7 @@ function VerificationContent() {
 
           <CardContent className="p-12">
             {!isAuthentic && (
-              <div className="mb-10 p-6 bg-destructive/10 border border-destructive/20 rounded-3xl flex items-start gap-4 text-destructive">
+              <div className="mb-10 p-6 bg-destructive/10 border border-destructive/20 rounded-3xl flex items-start gap-4 text-destructive animate-pulse">
                 <AlertTriangle className="w-6 h-6 shrink-0 mt-1" />
                 <div className="space-y-1">
                   <p className="font-bold">{t('verify.securityAlert')}</p>
@@ -137,7 +137,7 @@ function VerificationContent() {
 
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 KISAN SAHAYATA Authenticity Portal. All rights reserved.
+            © 2024 KISAN SAHAYATA Authenticity Portal. Secure Verification System.
           </p>
         </div>
       </div>
