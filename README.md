@@ -3,7 +3,7 @@ Kisan Sahayata 🌾
 Kisan Sahayata is a modern, AI-powered web application designed to help farmers track, verify, and understand their subsidy eligibility. The platform ensures transparency, accessibility, and ease of use, enabling farmers to stay informed and empowered.
 
 🚀 Features
-Subsidy Status Tracking – Farmers can check the status of government subsidies in real-time. </br>
+Subsidy Status Tracking – Farmers can check the status of government subsidies in real-time. <\br>
 Verification & Authenticity – QR codes are generated for secure verification of subsidy records.
 AI-Assisted Guidance – Google Gemini (2.5 Flash) provides eligibility guidance and drafts multilingual reports.
 Email & Notification Support – Alerts users about subsidy updates and verification results.
